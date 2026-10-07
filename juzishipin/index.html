@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>桔子视频-影视资源分类浏览与在线观看指南</title>
+<meta name="description" content="桔子视频是一个影视资源分类浏览平台，提供电影、电视剧、综艺、动漫、纪录片等频道的浏览入口与观看指南，帮助用户快速找到想看的影视内容。">
+<meta name="keywords" content="桔子视频,影视资源,在线观看,电影,电视剧,综艺,动漫,纪录片">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;color:#2b2b2b;background:#fdf8f3;line-height:1.7}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.site-header{background:linear-gradient(135deg,#ff8a3d,#ff6a00);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(255,106,0,.25)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700;letter-spacing:.5px}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:#fff;color:#ff6a00;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800}
+.main-nav{display:flex;gap:22px;font-size:15px}
+.main-nav a{padding:6px 2px;border-bottom:2px solid transparent;transition:.2s}
+.main-nav a:hover,.main-nav a.active{border-bottom-color:#fff;opacity:.95}
+.header-actions{display:flex;align-items:center;gap:12px}
+.search-box{display:flex;background:rgba(255,255,255,.2);border-radius:20px;overflow:hidden}
+.search-box input{border:none;background:transparent;padding:8px 14px;color:#fff;outline:none;width:150px;font-size:14px}
+.search-box input::placeholder{color:rgba(255,255,255,.8)}
+.search-box button{border:none;background:#fff;color:#ff6a00;padding:0 16px;cursor:pointer;font-size:14px;font-weight:600}
+.menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff;border-radius:6px;padding:5px 10px;font-size:16px;cursor:pointer}
+
+.hero{background:linear-gradient(160deg,#fff3e6 0%,#ffe3cc 100%);padding:54px 0 44px;border-bottom:1px solid #ffe0c4}
+.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero h1{font-size:34px;line-height:1.35;color:#3a2410;margin-bottom:16px}
+.hero h1 span{color:#ff6a00}
+.hero p{font-size:16px;color:#6b5544;margin-bottom:22px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.hero-tags a{background:#fff;border:1px solid #ffd3b0;color:#e05f00;font-size:13px;padding:5px 14px;border-radius:16px;transition:.2s}
+.hero-tags a:hover{background:#ff6a00;color:#fff;border-color:#ff6a00}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:#ff6a00;color:#fff;padding:12px 28px;border-radius:26px;font-size:15px;font-weight:600;box-shadow:0 6px 18px rgba(255,106,0,.3);transition:.2s;display:inline-block}
+.btn-primary:hover{background:#e85d00;transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid #ff6a00;color:#ff6a00;padding:11px 26px;border-radius:26px;font-size:15px;font-weight:600;transition:.2s;display:inline-block}
+.btn-ghost:hover{background:#fff}
+.hero-panel{background:#fff;border-radius:16px;padding:24px;box-shadow:0 12px 34px rgba(200,120,40,.14)}
+.hero-panel h3{font-size:16px;color:#3a2410;margin-bottom:14px;padding-bottom:10px;border-bottom:1px dashed #ffd3b0}
+.hero-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.hero-list li{display:flex;justify-content:space-between;font-size:14px;color:#5c4632}
+.hero-list li span:last-child{color:#ff6a00;font-weight:600}
+
+.section{padding:52px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.section-head h2{font-size:24px;color:#3a2410;position:relative;padding-left:14px}
+.section-head h2::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:5px;border-radius:3px;background:#ff6a00}
+.section-head p{font-size:14px;color:#8a7563}
+.section-head .more{font-size:14px;color:#ff6a00;font-weight:600}
+
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cat-card{background:#fff;border:1px solid #ffe6d2;border-radius:14px;padding:22px 12px;text-align:center;transition:.25s}
+.cat-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(255,140,60,.18);border-color:#ffc79b}
+.cat-icon{font-size:26px;margin-bottom:8px}
+.cat-card h3{font-size:15px;color:#3a2410;margin-bottom:4px}
+.cat-card p{font-size:12px;color:#9b8674}
+
+.movie-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.movie-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(180,120,60,.1);transition:.25s;display:flex;flex-direction:column}
+.movie-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(255,120,40,.2)}
+.poster{height:158px;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff;position:relative}
+.poster.p1{background:linear-gradient(135deg,#ff9a56,#ff5e00)}
+.poster.p2{background:linear-gradient(135deg,#66a6ff,#2c6fd1)}
+.poster.p3{background:linear-gradient(135deg,#9d7bff,#5f3dc4)}
+.poster.p4{background:linear-gradient(135deg,#4ecdc4,#1a9e94)}
+.poster.p5{background:linear-gradient(135deg,#ff7b9c,#d63a63)}
+.poster.p6{background:linear-gradient(135deg,#f7b733,#d18b00)}
+.poster.p7{background:linear-gradient(135deg,#7ed56f,#3a9b2c)}
+.poster.p8{background:linear-gradient(135deg,#5b8cff,#2a4fd1)}
+.poster .badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.45);color:#fff;font-size:12px;padding:2px 9px;border-radius:10px}
+.movie-info{padding:14px 16px 18px;flex:1;display:flex;flex-direction:column}
+.movie-info h3{font-size:16px;color:#3a2410;margin-bottom:6px}
+.movie-info p{font-size:13px;color:#8a7563;flex:1}
+.movie-meta{display:flex;justify-content:space-between;font-size:12px;color:#b09a86;margin-top:10px;padding-top:10px;border-top:1px dashed #ffe6d2}
+.movie-meta em{font-style:normal;color:#ff6a00;font-weight:600}
+
+.rank-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:30px}
+.rank-list{list-style:none;background:#fff;border-radius:14px;padding:8px 22px;box-shadow:0 4px 14px rgba(180,120,60,.1)}
+.rank-list li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px dashed #ffe6d2}
+.rank-list li:last-child{border-bottom:none}
+.rank-num{width:26px;height:26px;border-radius:8px;background:#fff0e0;color:#ff6a00;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rank-list li:nth-child(1) .rank-num{background:#ff6a00;color:#fff}
+.rank-list li:nth-child(2) .rank-num{background:#ff9a56;color:#fff}
+.rank-list li:nth-child(3) .rank-num{background:#ffc79b;color:#8a4a00}
+.rank-text{flex:1}
+.rank-text strong{display:block;font-size:15px;color:#3a2410}
+.rank-text small{font-size:12px;color:#9b8674}
+.rank-heat{font-size:13px;color:#ff6a00;font-weight:600;white-space:nowrap}
+.side-note{background:#fff;border-radius:14px;padding:24px;box-shadow:0 4px 14px rgba(180,120,60,.1)}
+.side-note h3{font-size:17px;color:#3a2410;margin-bottom:12px}
+.side-note p{font-size:14px;color:#6b5544;margin-bottom:12px}
+.side-note ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.side-note li{font-size:13.5px;color:#6b5544;padding-left:16px;position:relative}
+.side-note li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:#ff9a56}
+
+.guide{background:#fff7ef;border-top:1px solid #ffe6d2;border-bottom:1px solid #ffe6d2}
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.guide-card{background:#fff;border-radius:14px;padding:26px 22px;border:1px solid #ffe6d2}
+.guide-card .step{display:inline-flex;width:30px;height:30px;border-radius:50%;background:#ff6a00;color:#fff;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin-bottom:12px}
+.guide-card h3{font-size:16px;color:#3a2410;margin-bottom:8px}
+.guide-card p{font-size:13.5px;color:#7a6553}
+
+.faq-list{display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1px solid #ffe6d2;border-radius:12px;padding:18px 22px}
+.faq-item h3{font-size:15.5px;color:#3a2410;margin-bottom:8px;display:flex;gap:8px}
+.faq-item h3::before{content:"Q";color:#ff6a00;font-weight:800}
+.faq-item p{font-size:14px;color:#6b5544}
+
+.site-footer{background:#2f2013;color:#c9b6a4;padding:44px 0 22px;margin-top:10px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:30px}
+.footer-grid h4{color:#fff;font-size:15px;margin-bottom:14px}
+.footer-grid p{font-size:13px;line-height:1.8}
+.footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-grid a{font-size:13px;color:#c9b6a4;transition:.2s}
+.footer-grid a:hover{color:#ff9a56}
+.footer-bottom{border-top:1px solid #46331f;padding-top:18px;text-align:center;font-size:12.5px;color:#8d7a68}
+
+@media(max-width:980px){
+.hero-inner{grid-template-columns:1fr}
+.cat-grid{grid-template-columns:repeat(3,1fr)}
+.movie-grid{grid-template-columns:repeat(2,1fr)}
+.rank-wrap{grid-template-columns:1fr}
+.guide-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.main-nav{display:none}
+.main-nav.open{display:flex;position:absolute;top:66px;left:0;right:0;background:#ff6a00;flex-direction:column;padding:14px 22px;gap:14px}
+.menu-toggle{display:block}
+.search-box input{width:110px}
+}
+@media(max-width:560px){
+.hero h1{font-size:25px}
+.cat-grid{grid-template-columns:repeat(2,1fr)}
+.movie-grid{grid-template-columns:1fr}
+.header-inner{height:60px}
+.logo{font-size:19px}
+.search-box{display:none}
+.footer-grid{grid-template-columns:1fr}
+.section{padding:38px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="logo">
+      <span class="logo-mark">桔</span>
+      <span>桔子视频</span>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="active">首页</a>
+      <a href="#category">频道分类</a>
+      <a href="#hot">热门推荐</a>
+      <a href="#rank">排行榜</a>
+      <a href="#guide">观看指南</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-box">
+        <input type="text" placeholder="搜索影片、剧集" aria-label="搜索影片">
+        <button type="button">搜索</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="展开导航">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div>
+      <h1>桔子视频 · <span>影视资源分类浏览</span>与观看指南</h1>
+      <p>桔子视频把电影、电视剧、综艺、动漫、纪录片等不同类型的影视内容按频道整理归类，方便你根据题材、地区或更新节奏快速定位想看的内容，减少在繁杂列表里来回翻找的时间。</p>
+      <div class="hero-tags">
+        <a href="#category">电影</a>
+        <a href="#category">电视剧</a>
+        <a href="#category">综艺</a>
+        <a href="#category">动漫</a>
+        <a href="#category">纪录片</a>
+        <a href="#category">短剧</a>
+      </div>
+      <div class="hero-btns">
+        <a href="#hot" class="btn-primary">浏览热门推荐</a>
+        <a href="#guide" class="btn-ghost">查看观看指南</a>
+      </div>
+    </div>
+    <aside class="hero-panel">
+      <h3>今日浏览提示</h3>
+      <ul class="hero-list">
+        <li><span>电影频道</span><span>剧情 / 科幻 / 悬疑</span></li>
+        <li><span>剧集频道</span><span>国产 / 欧美 / 日韩</span></li>
+        <li><span>综艺频道</span><span>真人秀 / 访谈 / 音乐</span></li>
+        <li><span>动漫频道</span><span>国漫 / 日番 / 剧场版</span></li>
+        <li><span>纪录片频道</span><span>自然 / 人文 / 历史</span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="category">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>频道分类</h2>
+        <p>按内容类型划分入口，先选频道再挑内容，查找更直接</p>
+      </div>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card" href="#hot">
+        <div class="cat-icon">🎬</div>
+        <h3>电影</h3>
+        <p>剧情 · 科幻 · 悬疑</p>
+      </a>
+      <a class="cat-card" href="#hot">
+        <div class="cat-icon">📺</div>
+        <h3>电视剧</h3>
+        <p>国产 · 欧美 · 日韩</p>
+      </a>
+      <a class="cat-card" href="#hot">
+        <div class="cat-icon">🎤</div>
+        <h3>综艺</h3>
+        <p>真人秀 · 音乐 · 访谈</p>
+      </a>
+      <a class="cat-card" href="#hot">
+        <div class="cat-icon">🌸</div>
+        <h3>动漫</h3>
+        <p>国漫 · 日番 · 剧场版</p>
+      </a>
+      <a class="cat-card" href="#hot">
+        <div class="cat-icon">🌍</div>
+        <h3>纪录片</h3>
+        <p>自然 · 人文 · 历史</p>
+      </a>
+      <a class="cat-card" href="#hot">
+        <div class="cat-icon">⚡</div>
+        <h3>短剧</h3>
+        <p>都市 · 情感 · 悬疑</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="hot" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>热门推荐</h2>
+        <p>按题材与热度整理的精选内容，供浏览参考</p>
+      </div>
+      <a href="#rank" class="more">查看完整榜单 →</a>
+    </div>
+    <div class="movie-grid">
+      <article class="movie-card">
+        <div class="poster p1"><span>🎞</span><span class="badge">电影</span></div>
+        <div class="movie-info">
+          <h3>剧情片精选</h3>
+          <p>以人物成长与生活故事为核心，适合喜欢慢节奏叙事的观众。</p>
+          <div class="movie-meta"><span>剧情 / 现实</span><em>推荐</em></div>
+        </div>
+      </article>
+      <article class="movie-card">
+        <div class="poster p2"><span>🚀</span><span class="badge">电影</span></div>
+        <div class="movie-info">
+          <h3>科幻题材</h3>
+          <p>围绕未来设定与科技想象展开，画面与世界观是主要看点。</p>
+          <div class="movie-meta"><span>科幻 / 冒险</span><em>热门</em></div>
+        </div>
+      </article>
+      <article class="movie-card">
+        <div class="poster p3"><span>🕵</span><span class="badge">剧集</span></div>
+        <div class="movie-info">
+          <h3>悬疑推理剧</h3>
+          <p>线索层层递进，适合喜欢边看边推理的观众。</p>
+          <div class="movie-meta"><span>悬疑 / 推理</span><em>推荐</em></div>
+        </div>
+      </article>
+      <article class="movie-card">
+        <div class="poster p4"><span>🏙</span><span class="badge">剧集</span></div>
+        <div class="movie-info">
+          <h3>都市生活剧</h3>
+          <p>聚焦职场、家庭与情感话题，节奏轻快贴近日常。</p>
+          <div class="movie-meta"><span>都市 / 情感</span><em>更新中</em></div>
+        </div>
+      </article>
+      <article class="movie-card">
+        <div class="poster p5"><span>🎶</span><span class="badge">综艺</span></div>
+        <div class="movie-info">
+          <h3>音乐竞演综艺</h3>
+          <p>以舞台表演和音乐改编为主，适合喜欢现场感的观众。</p>
+          <div class="movie-meta"><span>音乐 / 竞演</span><em>热播</em></div>
+        </div>
+      </article>
+      <article class="movie-card">
+        <div class="poster p6"><span>🍳</span><span class="badge">综艺</span></div>
+        <div class="movie-info">
+          <h3>生活体验综艺</h3>
+          <p>记录日常相处与生活细节，氛围轻松解压。</p>
+          <div class="movie-meta"><span>生活 / 真人秀</span><em>推荐</em></div>
+        </div>
+      </article>
+      <article class="movie-card">
+        <div class="poster p7"><span>🐾</span><span class="badge">动漫</span></div>
+        <div class="movie-info">
+          <h3>治愈系动画</h3>
+          <p>画风温暖、故事细腻，适合放松时观看。</p>
+          <div class="movie-meta"><span>治愈 / 日常</span><em>推荐</em></div>
+        </div>
+      </article>
+      <article class="movie-card">
+        <div class="poster p8"><span>📖</span><span class="badge">纪录片</span></div>
+        <div class="movie-info">
+          <h3>人文历史纪录</h3>
+          <p>以真实影像和资料讲述历史与人文故事。</p>
+          <div class="movie-meta"><span>历史 / 人文</span><em>精选</em></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="rank" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>热度参考榜</h2>
+        <p>依据站内浏览与收藏情况整理，仅作浏览顺序参考</p>
+      </div>
+    </div>
+    <div class="rank-wrap">
+      <ol class="rank-list">
+        <li>
+          <span class="rank-num">1</span>
+          <span class="rank-text"><strong>悬疑推理剧集</strong><small>剧情紧凑 · 线索密集</small></span>
+          <span class="rank-heat">高热度</span>
+        </li>
+        <li>
+          <span class="rank-num">2</span>
+          <span class="rank-text"><strong>都市情感剧</strong><small>贴近生活 · 更新稳定</small></span>
+          <span class="rank-heat">高热度</span>
+        </li>
+        <li>
+          <span class="rank-num">3</span>
+          <span class="rank-text"><strong>科幻电影</strong><small>世界观设定 · 视效突出</small></span>
+          <span class="rank-heat">较高</span>
+        </li>
+        <li>
+          <span class="rank-num">4</span>
+          <span class="rank-text"><strong>音乐竞演综艺</strong><small>舞台表演 · 话题度高</small></span>
+          <span class="rank-heat">较高</span>
+        </li>
+        <li>
+          <span class="rank-num">5</span>
+          <span class="rank-text"><strong>治愈系动画</strong><small>画风温暖 · 适合放松</small></span>
+          <span class="rank-heat">稳定</span>
+        </li>
+        <li>
+          <span class="rank-num">6</span>
+          <span class="rank-text"><strong>自然纪录片</strong><small>画面精美 · 知识性强</small></span>
+          <span class="rank-heat">稳定</span>
+        </li>
+      </ol>
+      <aside class="side-note">
+        <h3>怎么用这份榜单</h3>
+        <p>榜单反映的是一段时间内的浏览倾向，并不等同于内容质量高低。选择时可以先看题材是否符合口味，再决定是否继续观看。</p>
+        <ul>
+          <li>先看题材标签，确认是否适合自己</li>
+          <li>关注更新状态，连载内容注意节奏</li>
+          <li>参考简介与分类，避免只看排名</li>
+          <li>结合观看时长安排，避免熬夜追剧</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section guide" id="guide">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>观看指南</h2>
+        <p>从选片到观看，几个实用步骤帮你更快找到合适内容</p>
+      </div>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <span class="step">1</span>
+        <h3>先定类型再选片</h3>
+        <p>如果只是想放松，可以从综艺、治愈系动画或生活类内容入手；如果想沉浸剧情，可以优先考虑剧集或电影频道。</p>
+      </div>
+      <div class="guide-card">
+        <span class="step">2</span>
+        <h3>留意更新与篇幅</h3>
+        <p>连载剧集和综艺通常按周更新，观看前先确认更新节奏和总集数，避免中途等待影响体验。</p>
+      </div>
+      <div class="guide-card">
+        <span class="step">3</span>
+        <h3>合理安排观看时间</h3>
+        <p>连续剧容易一集接一集，建议提前设定观看时长，注意用眼休息，保持规律作息。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>常见问题</h2>
+        <p>关于影视分类浏览与观看，用户常问的几个问题</p>
+      </div>
+    </div>
+    <div class="faq-list">
+      <article class="faq-item">
+        <h3>桔子视频主要提供哪些内容？</h3>
+        <p>页面围绕电影、电视剧、综艺、动漫、纪录片、短剧等常见影视类型进行频道划分，帮助用户按题材和地区快速浏览，具体内容以站内实际展示为准。</p>
+      </article>
+      <article class="faq-item">
+        <h3>怎样更快找到想看的影片？</h3>
+        <p>可以先用顶部搜索框输入片名或关键词；如果不确定看什么，先进入频道分类，再按题材标签和热度排序浏览，通常比逐个翻页更高效。</p>
+      </article>
+      <article class="faq-item">
+        <h3>排行榜上的内容一定更好看吗？</h3>
+        <p>不一定。榜单反映的是浏览倾向和讨论热度，个人喜好差异很大。建议把榜单当作参考，最终以题材是否符合自己的兴趣为准。</p>
+      </article>
+      <article class="faq-item">
+        <h3>观看时需要注意什么？</h3>
+        <p>建议在稳定的网络环境下观看，并合理安排时长。长时间连续观看容易造成眼睛疲劳，可以每隔一段时间起身活动、远眺放松。</p>
+      </article>
+      <article class="faq-item">
+        <h3>内容分类会经常调整吗？</h3>
+        <p>频道和标签会随着内容类型的变化做适度调整，以便分类更贴合实际片源。浏览时以页面当前显示的分类为准即可。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>桔子视频</h4>
+        <p>一个以影视资源分类浏览为核心的页面，按电影、剧集、综艺、动漫、纪录片等频道整理内容，方便用户按题材与热度查找。</p>
+      </div>
+      <div>
+        <h4>内容频道</h4>
+        <ul>
+          <li><a href="#category">电影频道</a></li>
+          <li><a href="#category">电视剧频道</a></li>
+          <li><a href="#category">综艺频道</a></li>
+          <li><a href="#category">动漫频道</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速入口</h4>
+        <ul>
+          <li><a href="#hot">热门推荐</a></li>
+          <li><a href="#rank">热度参考榜</a></li>
+          <li><a href="#guide">观看指南</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>使用提示</h4>
+        <ul>
+          <li>按题材筛选内容</li>
+          <li>注意连载更新节奏</li>
+          <li>合理安排观看时长</li>
+          <li>保持良好用眼习惯</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>桔子视频 · 影视资源分类浏览与观看参考页面</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('mainNav');
+  if(toggle && nav){
+    toggle.addEventListener('click', function(){
+      nav.classList.toggle('open');
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        nav.classList.remove('open');
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+        </html>
