@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>age动漫-动漫在线观看与追番指南</title>
+<meta name="description" content="age动漫是一个面向动漫爱好者的在线观看与追番信息页面，整理新番更新、经典番剧分类、观看方式与常见问题，帮助你更方便地找到想看的动漫内容。">
+<meta name="keywords" content="age动漫,动漫在线观看,新番更新,追番指南,动漫分类,番剧推荐">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --ink:#1b1d2a;
+  --ink-soft:#4a4f66;
+  --line:#e6e8f2;
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --brand:#5b4bff;
+  --brand-2:#ff5d8f;
+  --accent:#00c2b2;
+  --radius:16px;
+  --shadow:0 8px 26px rgba(27,29,42,.08);
+  --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;height:66px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.3px}
+.logo-mark{
+  width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:15px;font-weight:800;
+}
+.logo span.en{color:var(--brand)}
+.main-nav{display:flex;gap:6px;flex-wrap:wrap}
+.main-nav a{
+  padding:8px 14px;border-radius:999px;font-size:15px;color:var(--ink-soft);
+  transition:.2s;
+}
+.main-nav a:hover,.main-nav a.active{background:#eef0ff;color:var(--brand)}
+.header-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 18px;border-radius:999px;font-size:14px;font-weight:600;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;
+  white-space:nowrap;
+}
+.header-cta:hover{filter:brightness(1.06)}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#241d5c 0%,#4b3bd6 45%,#a63fb0 100%);
+  color:#fff;padding:60px 0 68px;
+}
+.hero::after{
+  content:"";position:absolute;right:-140px;top:-120px;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.22),transparent 65%);
+}
+.hero::before{
+  content:"";position:absolute;left:-90px;bottom:-150px;
+  width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,194,178,.35),transparent 68%);
+}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.hero h1{font-size:38px;line-height:1.28;font-weight:800;letter-spacing:.5px}
+.hero h1 em{font-style:normal;color:#ffe06a}
+.hero p.lead{margin-top:16px;font-size:16.5px;color:rgba(255,255,255,.88);max-width:560px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-tags span{
+  font-size:13px;padding:6px 13px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 26px;border-radius:999px;font-size:15px;font-weight:600;
+  transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:#fff;color:#3a2ec7}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.22)}
+.btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+
+.hero-panel{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:20px;padding:22px;
+  backdrop-filter:blur(6px);
+}
+.hero-panel h3{font-size:15px;font-weight:700;letter-spacing:.5px;color:#ffe06a;margin-bottom:14px}
+.hero-panel ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.hero-panel li{
+  display:flex;gap:12px;align-items:flex-start;
+  font-size:14.5px;color:rgba(255,255,255,.9);
+}
+.hero-panel li b{
+  flex:0 0 auto;width:22px;height:22px;border-radius:7px;
+  background:rgba(255,255,255,.2);color:#fff;font-size:12px;
+  display:flex;align-items:center;justify-content:center;font-weight:700;
+}
+
+/* ---------- Section base ---------- */
+section{padding:56px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:26px;flex-wrap:wrap}
+.section-head h2{font-size:25px;font-weight:800;letter-spacing:.3px}
+.section-head h2 i{
+  display:inline-block;width:6px;height:20px;border-radius:3px;margin-right:10px;
+  background:linear-gradient(180deg,var(--brand),var(--brand-2));vertical-align:-3px;
+}
+.section-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px}
+.section-head .more{font-size:14px;color:var(--brand);font-weight:600}
+
+/* ---------- Category grid ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);transition:.22s;
+}
+.cat-card:hover{transform:translateY(-4px);border-color:#d5d8ff}
+.cat-card .ico{
+  width:42px;height:42px;border-radius:12px;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:center;font-size:19px;
+  background:#eef0ff;color:var(--brand);
+}
+.cat-card h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+.cat-card p{font-size:13.8px;color:var(--ink-soft)}
+.cat-card .links{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.cat-card .links a{
+  font-size:12.5px;color:var(--ink-soft);background:#f4f5fb;
+  padding:3px 10px;border-radius:999px;transition:.2s;
+}
+.cat-card .links a:hover{background:#e9ebff;color:var(--brand)}
+
+/* ---------- Update list ---------- */
+.update-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:start}
+.update-list{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.update-item{
+  display:flex;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);
+  transition:.2s;
+}
+.update-item:last-child{border-bottom:none}
+.update-item:hover{background:#fafbff}
+.update-item .day{
+  flex:0 0 54px;text-align:center;font-size:12px;color:var(--ink-soft);
+  background:#f4f5fb;border-radius:10px;padding:7px 0;line-height:1.3;
+}
+.update-item .day b{display:block;font-size:16px;color:var(--brand)}
+.update-item .info{flex:1;min-width:0}
+.update-item .info h3{font-size:15.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.update-item .info p{font-size:13px;color:var(--ink-soft);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.update-item .tag{
+  flex:0 0 auto;font-size:12px;padding:4px 11px;border-radius:999px;
+  background:#eef0ff;color:var(--brand);font-weight:600;
+}
+.tag.hot{background:#ffeef4;color:#e0407a}
+.tag.new{background:#e6fbf7;color:#00a294}
+
+/* ---------- Side rank ---------- */
+.side-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+.side-box h3{font-size:16.5px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.side-box h3::before{content:"";width:5px;height:16px;border-radius:3px;background:linear-gradient(180deg,var(--brand-2),var(--brand))}
+.rank-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.rank-list li{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.rank-list li:last-child{border-bottom:none}
+.rank-list .no{
+  flex:0 0 22px;height:22px;border-radius:7px;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;background:#f0f1f8;color:var(--ink-soft);
+}
+.rank-list li:nth-child(1) .no{background:#ffd76a;color:#7a5200}
+.rank-list li:nth-child(2) .no{background:#d9ddf0;color:#4a4f66}
+.rank-list li:nth-child(3) .no{background:#ffd9c2;color:#a04a12}
+.rank-list .name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-list .meta{font-size:12.5px;color:var(--ink-soft)}
+
+/* ---------- Guide (steps) ---------- */
+.guide{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;position:relative;
+}
+.step .num{
+  font-size:14px;font-weight:800;color:#fff;width:30px;height:30px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+}
+.step h3{font-size:16.5px;font-weight:700;margin-bottom:8px}
+.step p{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- Article blocks ---------- */
+.article-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:start}
+.prose h2{font-size:22px;font-weight:800;margin-bottom:14px}
+.prose h3{font-size:17px;font-weight:700;margin:22px 0 8px;color:#2a2e45}
+.prose p{font-size:15px;color:#3c4159;margin-bottom:12px}
+.prose ul{margin:0 0 14px 20px;font-size:15px;color:#3c4159}
+.prose ul li{margin-bottom:7px}
+.notice{
+  background:#fff8ec;border:1px solid #ffe2b8;border-radius:var(--radius);
+  padding:18px 20px;font-size:14px;color:#7a5a17;margin-top:20px;
+}
+.notice b{color:#a06a00}
+
+/* ---------- FAQ ---------- */
+.faq{background:#fff;border-top:1px solid var(--line)}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{
+  border:1px solid var(--line);border-radius:14px;background:var(--bg);
+  overflow:hidden;
+}
+.faq-item summary{
+  cursor:pointer;padding:16px 20px;font-size:15.5px;font-weight:600;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:"+";font-size:20px;color:var(--brand);font-weight:400;transition:.2s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .answer{padding:0 20px 18px;font-size:14.5px;color:var(--ink-soft)}
+
+/* ---------- Footer ---------- */
+.site-footer{background:#191b28;color:#a9adc4;padding:44px 0 26px;font-size:14px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;margin-bottom:30px}
+.footer-grid h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:14px}
+.footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-grid a:hover{color:#fff}
+.footer-brand p{margin-top:12px;line-height:1.75;color:#8d92ab;max-width:320px}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.09);padding-top:18px;
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#7c819a;font-size:13px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;gap:32px}
+  .hero h1{font-size:31px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .update-layout{grid-template-columns:1fr}
+  .article-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .main-nav{display:none}
+  .header-cta{padding:8px 14px;font-size:13px}
+  .hero{padding:42px 0 50px}
+  .hero h1{font-size:26px}
+  .hero p.lead{font-size:15px}
+  section{padding:40px 0}
+  .cat-grid{grid-template-columns:1fr}
+  .section-head h2{font-size:21px}
+  .update-item{padding:14px 15px;gap:12px}
+  .update-item .day{flex-basis:46px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">age</span>
+      <span class="en">age动漫</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#top" class="active">首页</a>
+      <a href="#category">动漫分类</a>
+      <a href="#update">更新动态</a>
+      <a href="#rank">人气榜单</a>
+      <a href="#guide">观看指南</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a class="header-cta" href="#guide">开始追番</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>age动漫 · 找番、追番、看番的<em>一站式入口</em></h1>
+        <p class="lead">age动漫面向喜爱日本动画、国产动画与海外番剧的观众，把新番更新时间、题材分类、人气排行和观看注意事项集中整理在一起，让你少走弯路，快速定位想看的作品。</p>
+        <div class="hero-tags">
+          <span>新番更新</span>
+          <span>题材分类</span>
+          <span>人气排行</span>
+          <span>追番日历</span>
+          <span>观看提示</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#update">查看更新动态</a>
+          <a class="btn btn-ghost" href="#category">按分类找番</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h3>追番前先了解这几件事</h3>
+        <ul>
+          <li><b>1</b><span>确认作品的正版播出平台，优先选择授权渠道观看。</span></li>
+          <li><b>2</b><span>留意更新周期，周更、季番与半年番的节奏差异较大。</span></li>
+          <li><b>3</b><span>通过题材标签筛选，避免被标题和封面误导。</span></li>
+          <li><b>4</b><span>关注分级与内容提示，合理安排观看时间。</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Category -->
+  <section id="category">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2><i></i>动漫分类导航</h2>
+          <p>按题材、受众和播出形式划分，帮助你从不同角度缩小选择范围。</p>
+        </div>
+        <a class="more" href="#rank">查看人气榜单 →</a>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <div class="ico">🔥</div>
+          <h3>热血 · 战斗</h3>
+          <p>以成长、对抗和团队羁绊为主线，节奏紧凑，适合喜欢强情节推进的观众。</p>
+          <div class="links"><a href="#update">少年漫改</a><a href="#update">竞技</a><a href="#update">奇幻战斗</a></div>
+        </article>
+        <article class="cat-card">
+          <div class="ico">🌸</div>
+          <h3>日常 · 治愈</h3>
+          <p>节奏舒缓、情绪温和，多以校园、生活与轻喜剧为主，适合放松时观看。</p>
+          <div class="links"><a href="#update">校园</a><a href="#update">美食</a><a href="#update">轻喜剧</a></div>
+        </article>
+        <article class="cat-card">
+          <div class="ico">🚀</div>
+          <h3>科幻 · 机战</h3>
+          <p>涉及未来设定、机械设定与世界观推演，常带有较强的思辨色彩。</p>
+          <div class="links"><a href="#update">太空歌剧</a><a href="#update">赛博</a><a href="#update">机甲</a></div>
+        </article>
+        <article class="cat-card">
+          <div class="ico">🕵️</div>
+          <h3>悬疑 · 推理</h3>
+          <p>以谜题、线索和反转推动剧情，观看时建议按顺序追，避免跳集。</p>
+          <div class="links"><a href="#update">本格推理</a><a href="#update">心理</a><a href="#update">犯罪</a></div>
+        </article>
+        <article class="cat-card">
+          <div class="ico">💗</div>
+          <h3>恋爱 · 青春</h3>
+          <p>围绕情感关系与成长展开，篇幅多为季番，适合连续观看。</p>
+          <div class="links"><a href="#update">校园恋爱</a><a href="#update">群像</a><a href="#update">治愈系</a></div>
+        </article>
+        <article class="cat-card">
+          <div class="ico">🏯</div>
+          <h3>国漫 · 东方</h3>
+          <p>国产动画与东方题材作品，近年产量与制作水准持续提升。</p>
+          <div class="links"><a href="#update">仙侠</a><a href="#update">历史</a><a href="#update">水墨风</a></div>
+        </article>
+        <article class="cat-card">
+          <div class="ico">🎬</div>
+          <h3>剧场版 · OVA</h3>
+          <p>独立成篇或承接正传的影像作品，时长与观看顺序需要提前确认。</p>
+          <div class="links"><a href="#update">剧场版</a><a href="#update">OVA</a><a href="#update">特别篇</a></div>
+        </article>
+        <article class="cat-card">
+          <div class="ico">📚</div>
+          <h3>轻小说 · 漫改</h3>
+          <p>由轻小说或漫画改编的动画，建议先了解原作进度再决定是否追更。</p>
+          <div class="links"><a href="#update">异世界</a><a href="#update">后宫</a><a href="#update">搞笑</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Update + Rank -->
+  <section id="update" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2><i></i>更新动态与追番参考</h2>
+          <p>下面按常见更新节奏整理示例条目，具体播出时间请以各平台官方信息为准。</p>
+        </div>
+        <a class="more" href="#faq">更新相关疑问 →</a>
+      </div>
+      <div class="update-layout">
+        <div class="update-list">
+          <article class="update-item">
+            <div class="day">周一<b>更新</b></div>
+            <div class="info">
+              <h3>热血战斗类 · 周更连载</h3>
+              <p>适合喜欢强节奏主线与成长线的观众，建议按集顺序观看。</p>
+            </div>
+            <span class="tag hot">人气</span>
+          </article>
+          <article class="update-item">
+            <div class="day">周二<b>更新</b></div>
+            <div class="info">
+              <h3>日常治愈类 · 周更连载</h3>
+              <p>单集独立性强，可从任意一集开始，适合碎片时间观看。</p>
+            </div>
+            <span class="tag new">新番</span>
+          </article>
+          <article class="update-item">
+            <div class="day">周三<b>更新</b></div>
+            <div class="info">
+              <h3>悬疑推理类 · 周更连载</h3>
+              <p>剧情连贯性强，跳集容易丢失线索，建议连续追更。</p>
+            </div>
+            <span class="tag">连载</span>
+          </article>
+          <article class="update-item">
+            <div class="day">周四<b>更新</b></div>
+            <div class="info">
+              <h3>科幻机战类 · 双周更</h3>
+              <p>设定信息量较大，可配合作品资料页了解背景。</p>
+            </div>
+            <span class="tag">设定向</span>
+          </article>
+          <article class="update-item">
+            <div class="day">周五<b>更新</b></div>
+            <div class="info">
+              <h3>恋爱青春类 · 周更连载</h3>
+              <p>情感线推进较慢，适合喜欢细腻叙事的观众。</p>
+            </div>
+            <span class="tag hot">高讨论</span>
+          </article>
+          <article class="update-item">
+            <div class="day">周末<b>合集</b></div>
+            <div class="info">
+              <h3>国漫与剧场版 · 周末集中更新</h3>
+              <p>国产动画与剧场版资源多集中在周末上线，可提前规划观看顺序。</p>
+            </div>
+            <span class="tag new">推荐</span>
+          </article>
+        </div>
+
+        <aside class="side-box" id="rank">
+          <h3>人气参考榜单</h3>
+          <ol class="rank-list">
+            <li><span class="no">1</span><span class="name">热血战斗代表作</span><span class="meta">长期热门</span></li>
+            <li><span class="no">2</span><span class="name">治愈日常代表作</span><span class="meta">口碑稳定</span></li>
+            <li><span class="no">3</span><span class="name">悬疑推理代表作</span><span class="meta">讨论度高</span></li>
+            <li><span class="no">4</span><span class="name">科幻机战代表作</span><span class="meta">设定向</span></li>
+            <li><span class="no">5</span><span class="name">恋爱青春代表作</span><span class="meta">季番常见</span></li>
+            <li><span class="no">6</span><span class="name">国漫东方代表作</span><span class="meta">持续上升</span></li>
+            <li><span class="no">7</span><span class="name">轻小说改编代表作</span><span class="meta">原作联动</span></li>
+            <li><span class="no">8</span><span class="name">剧场版与OVA</span><span class="meta">独立成篇</span></li>
+          </ol>
+          <p style="font-size:13px;color:var(--ink-soft);margin-top:14px">榜单仅按题材热度做归类示例，不代表具体作品的官方排名。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide -->
+  <section class="guide" id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2><i></i>追番三步走</h2>
+          <p>从确定题材到安排观看节奏，用三步把追番这件事理顺。</p>
+        </div>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="num">1</div>
+          <h3>先定题材与篇幅</h3>
+          <p>先想清楚自己想看热血、日常还是悬疑，再确认是季番、半年番还是长连载。篇幅直接决定你要投入的时间，先定方向能避免中途弃番。</p>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <h3>确认播出与顺序</h3>
+          <p>查看作品的播出平台、更新周期以及是否存在前传、剧场版或特别篇。观看顺序混乱是新手最常见的困扰，建议先看资料页再开播。</p>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <h3>建立自己的追番表</h3>
+          <p>把在追的作品按星期排列，标注更新日与已看进度。这样既能避免漏集，也方便在空档期补看旧番或剧场版。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article -->
+  <section>
+    <div class="wrap article-grid">
+      <div class="prose">
+        <h2>关于 age动漫 与在线观看动漫</h2>
+        <p>age动漫是动漫爱好者常用的检索词之一，通常用于寻找动漫在线观看入口、新番更新信息或番剧分类整理。对观众来说，真正需要解决的问题往往不是"在哪里看"，而是"看什么、怎么看、按什么顺序看"。因此一个实用的动漫信息页面，应该把作品分类、更新节奏、观看顺序和注意事项讲清楚，而不是只堆砌标题。</p>
+
+        <h3>动漫的主要分类方式</h3>
+        <p>动漫的分类维度并不唯一，常见的划分方式包括：</p>
+        <ul>
+          <li><b>按题材：</b>热血、日常、科幻、悬疑、恋爱、运动、奇幻等，决定作品的整体氛围。</li>
+          <li><b>按受众：</b>少年向、青年向、女性向、儿童向等，影响叙事方式与内容尺度。</li>
+          <li><b>按形式：</b>TV 动画、剧场版、OVA、网络动画，决定单集时长与观看节奏。</li>
+          <li><b>按来源：</b>原创动画、漫画改编、轻小说改编、游戏改编，影响剧情完整度。</li>
+        </ul>
+        <p>掌握这些维度后，你可以在面对大量作品时快速判断是否符合自己的口味，而不必逐部试看。</p>
+
+        <h3>如何判断一部番是否适合自己</h3>
+        <p>可以先看作品的题材标签与简介，再结合前几集的节奏判断。如果作品属于强剧情连贯型，建议从第一集开始按顺序观看；如果是日常单元剧，则可以从任意一集切入。对于改编作品，还可以参考原作类型，判断剧情是否会存在较大改动。</p>
+
+        <h3>观看时的注意事项</h3>
+        <p>不同作品在内容尺度、分级和播出平台上存在差异。建议优先选择正规授权渠道观看，注意作品的分级提示，并根据自身作息合理安排观看时间。对于尚未完结的作品，追更时保持耐心，避免因剧透影响观看体验。</p>
+
+        <div class="notice">
+          <b>小提示：</b>本页面为动漫信息整理与追番参考，不提供任何影视资源存储或下载服务。具体作品的播出时间、集数与观看渠道，请以官方平台公布的信息为准。
+        </div>
+      </div>
+
+      <aside class="side-box">
+        <h3>新手追番建议</h3>
+        <ul class="rank-list">
+          <li><span class="no">A</span><span class="name">先从季番入手</span></li>
+          <li><span class="no">B</span><span class="name">优先看已完结作品</span></li>
+          <li><span class="no">C</span><span class="name">按题材而非热度选番</span></li>
+          <li><span class="no">D</span><span class="name">留意前传与剧场版顺序</span></li>
+          <li><span class="no">E</span><span class="name">控制单日观看时长</span></li>
+        </ul>
+        <p style="font-size:13.5px;color:var(--ink-soft);margin-top:16px">追番是一种长期习惯，节奏比数量更重要。找到适合自己的观看方式，才能持续享受动漫带来的乐趣。</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2><i></i>常见问题</h2>
+          <p>整理观众在搜索 age动漫 与追番时经常遇到的疑问。</p>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>age动漫是什么？</summary>
+          <div class="answer">age动漫是动漫爱好者常用的检索词，通常指向动漫在线观看、新番更新或番剧分类相关的信息入口。不同平台的具体服务内容存在差异，建议以你实际访问的网站说明为准。</div>
+        </details>
+        <details class="faq-item">
+          <summary>怎样找到适合自己的动漫？</summary>
+          <div class="answer">可以先按题材筛选，再结合篇幅和播出形式判断。季番适合短期集中观看，长连载适合长期追更；日常治愈类适合放松，悬疑推理类建议连续追更以免丢失线索。</div>
+        </details>
+        <details class="faq-item">
+          <summary>新番一般什么时候更新？</summary>
+          <div class="answer">多数 TV 动画按周更新，具体星期几取决于作品安排，不同平台的更新时间也可能存在时差。最稳妥的方式是查看官方公布的播出时间表。</div>
+        </details>
+        <details class="faq-item">
+          <summary>观看顺序重要吗？</summary>
+          <div class="answer">对于剧情连贯的作品非常重要。若存在前传、剧场版或特别篇，建议先确认推荐观看顺序再开始，否则容易对剧情产生误解。</div>
+        </details>
+        <details class="faq-item">
+          <summary>追番时需要注意什么？</summary>
+          <div class="answer">注意作品分级与内容提示，优先选择正规授权渠道观看，并合理安排观看时间。对于尚未完结的作品，避免被剧透影响体验。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>age动漫</h4>
+        <p>面向动漫爱好者的追番信息整理页面，涵盖题材分类、更新动态、人气参考与观看指南，帮助你更高效地找到想看的作品。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#category">动漫分类</a></li>
+          <li><a href="#update">更新动态</a></li>
+          <li><a href="#rank">人气榜单</a></li>
+          <li><a href="#guide">观看指南</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>题材入口</h4>
+        <ul>
+          <li><a href="#category">热血战斗</a></li>
+          <li><a href="#category">日常治愈</a></li>
+          <li><a href="#category">悬疑推理</a></li>
+          <li><a href="#category">国漫东方</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>帮助与说明</h4>
+        <ul>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#guide">追番步骤</a></li>
+          <li><a href="#top">返回顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 age动漫 · 动漫信息整理与追番参考</span>
+      <span>页面内容仅供参考，具体播出信息请以官方平台为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('.main-nav a');
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(){
+      navLinks.forEach(function(l){ l.classList.remove('active'); });
+      link.classList.add('active');
+    });
+  });
+
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item){
+    item.addEventListener('toggle', function(){
+      if(item.open){
+        faqItems.forEach(function(other){
+          if(other !== item){ other.open = false; }
+        });
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+  </html>
