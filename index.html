@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大熊看漫网址 - 漫画在线阅读入口与使用指南</title>
+<meta name="description" content="大熊看漫网址提供漫画在线阅读入口导航与使用指南，介绍站点访问方式、常见漫画分类、阅读技巧与访问问题排查，帮助漫画爱好者快速找到想看的内容。">
+<meta name="keywords" content="大熊看漫网址,大熊看漫,漫画在线阅读,漫画网址导航,看漫画入口">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --ink:#1b1f2a;
+    --ink-soft:#4a5265;
+    --line:#e3e6ee;
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --brand:#ff6b35;
+    --brand-deep:#e04e18;
+    --brand-soft:#fff1ea;
+    --accent:#3b5bdb;
+    --accent-soft:#eef1fd;
+    --radius:14px;
+    --shadow:0 6px 20px rgba(27,31,42,.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- 顶部导航 ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;height:66px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;}
+  .logo-mark{
+    width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg,var(--brand),#ffa06b);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:18px;font-weight:800;box-shadow:0 4px 12px rgba(255,107,53,.35);
+  }
+  .logo small{display:block;font-size:11px;font-weight:500;color:var(--ink-soft);letter-spacing:1px;}
+  .main-nav{display:flex;gap:6px;flex-wrap:wrap;}
+  .main-nav a{
+    padding:8px 14px;border-radius:999px;font-size:14.5px;color:var(--ink-soft);
+    transition:.2s;
+  }
+  .main-nav a:hover{background:var(--brand-soft);color:var(--brand-deep);}
+  .header-cta{
+    padding:9px 18px;border-radius:999px;font-size:14.5px;font-weight:600;
+    background:var(--brand);color:#fff;white-space:nowrap;
+    box-shadow:0 4px 14px rgba(255,107,53,.35);transition:.2s;
+  }
+  .header-cta:hover{background:var(--brand-deep);}
+
+  /* ---------- 首屏 ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 380px at 88% -10%,rgba(255,107,53,.16),transparent 70%),
+      radial-gradient(700px 320px at -5% 10%,rgba(59,91,219,.13),transparent 70%),
+      #fff;
+    border-bottom:1px solid var(--line);
+    padding:56px 0 48px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;}
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--brand-soft);color:var(--brand-deep);
+    font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;
+    margin-bottom:18px;
+  }
+  .hero h1{font-size:36px;line-height:1.3;margin:0 0 16px;letter-spacing:-.5px;}
+  .hero h1 em{font-style:normal;color:var(--brand);}
+  .hero p.lead{font-size:16.5px;color:var(--ink-soft);margin:0 0 26px;max-width:600px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 24px;border-radius:999px;font-size:15.5px;font-weight:600;
+    transition:.2s;border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(255,107,53,.32);}
+  .btn-primary:hover{background:var(--brand-deep);transform:translateY(-1px);}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--brand);color:var(--brand-deep);}
+  .hero-points{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft);}
+  .hero-points span{display:flex;align-items:center;gap:7px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);flex:none;}
+
+  .hero-panel{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    box-shadow:var(--shadow);padding:22px;
+  }
+  .hero-panel h2{font-size:16px;margin:0 0 4px;display:flex;align-items:center;gap:8px;}
+  .hero-panel h2 .badge{
+    font-size:11px;font-weight:700;color:#fff;background:var(--accent);
+    padding:2px 8px;border-radius:6px;
+  }
+  .hero-panel p.sub{margin:0 0 16px;font-size:13.5px;color:var(--ink-soft);}
+  .quick-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .quick-list li{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:12px 14px;border-radius:12px;background:var(--bg);
+    border:1px solid #eceef6;transition:.2s;
+  }
+  .quick-list li:hover{background:var(--accent-soft);border-color:#d7defb;}
+  .quick-num{
+    flex:none;width:24px;height:24px;border-radius:8px;background:#fff;
+    color:var(--accent);font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;border:1px solid #dfe4f7;
+  }
+  .quick-list strong{display:block;font-size:14.5px;margin-bottom:2px;}
+  .quick-list small{color:var(--ink-soft);font-size:13px;line-height:1.6;display:block;}
+
+  /* ---------- 通用区块 ---------- */
+  section{padding:52px 0;}
+  .section-head{margin-bottom:28px;}
+  .section-head .kicker{
+    font-size:13px;font-weight:700;letter-spacing:2px;color:var(--brand);
+    text-transform:uppercase;margin-bottom:8px;
+  }
+  .section-head h2{font-size:26px;margin:0 0 10px;letter-spacing:-.3px;}
+  .section-head p{margin:0;color:var(--ink-soft);max-width:760px;font-size:15.5px;}
+
+  /* ---------- 分类卡片 ---------- */
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .cat-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;transition:.22s;box-shadow:0 2px 6px rgba(27,31,42,.03);
+  }
+  .cat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#ffd9c7;}
+  .cat-icon{
+    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:21px;margin-bottom:14px;background:var(--brand-soft);
+  }
+  .cat-card h3{font-size:16.5px;margin:0 0 8px;}
+  .cat-card p{margin:0 0 12px;font-size:14px;color:var(--ink-soft);}
+  .cat-card .tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .cat-card .tags span{
+    font-size:12px;color:var(--ink-soft);background:var(--bg);
+    border:1px solid var(--line);padding:2px 9px;border-radius:999px;
+  }
+
+  /* ---------- 阅读指南 两栏 ---------- */
+  .guide-layout{display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:start;}
+  .steps{display:grid;gap:16px;}
+  .step{
+    display:flex;gap:16px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;
+  }
+  .step-idx{
+    flex:none;width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),#6b83ff);color:#fff;
+    font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;
+  }
+  .step h3{margin:2px 0 6px;font-size:16.5px;}
+  .step p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+
+  aside.side-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:0 2px 6px rgba(27,31,42,.03);
+  }
+  aside.side-card h3{margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:8px;}
+  aside.side-card h3::before{
+    content:"";width:4px;height:16px;border-radius:2px;background:var(--brand);
+  }
+  .notice-list{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  .notice-list li{font-size:14px;color:var(--ink-soft);padding-left:18px;position:relative;}
+  .notice-list li::before{
+    content:"";position:absolute;left:0;top:9px;width:7px;height:7px;
+    border-radius:50%;background:var(--brand);opacity:.7;
+  }
+  .notice-list strong{color:var(--ink);}
+
+  /* ---------- 排行/推荐列表 ---------- */
+  .rank-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+  .rank-col{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+  .rank-col h3{margin:0 0 16px;font-size:17px;display:flex;align-items:center;justify-content:space-between;}
+  .rank-col h3 span{font-size:12px;font-weight:500;color:var(--ink-soft);}
+  .rank-list{list-style:none;margin:0;padding:0;}
+  .rank-list li{
+    display:flex;align-items:center;gap:14px;padding:11px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .rank-list li:last-child{border-bottom:none;}
+  .rank-no{
+    flex:none;width:22px;font-size:14px;font-weight:800;color:#b9bfd0;font-style:italic;
+  }
+  .rank-list li:nth-child(1) .rank-no{color:#ff6b35;}
+  .rank-list li:nth-child(2) .rank-no{color:#f59f00;}
+  .rank-list li:nth-child(3) .rank-no{color:#868e96;}
+  .rank-info{flex:1;min-width:0;}
+  .rank-info strong{display:block;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rank-info small{color:var(--ink-soft);font-size:12.5px;}
+  .rank-tag{
+    flex:none;font-size:12px;color:var(--brand-deep);background:var(--brand-soft);
+    padding:2px 9px;border-radius:999px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:grid;gap:14px;max-width:900px;}
+  details.faq{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:0 20px;transition:.2s;
+  }
+  details.faq[open]{border-color:#ffd9c7;box-shadow:var(--shadow);}
+  details.faq summary{
+    cursor:pointer;list-style:none;padding:17px 0;font-weight:600;font-size:15.5px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  details.faq summary::-webkit-details-marker{display:none;}
+  details.faq summary::after{
+    content:"+";font-size:20px;font-weight:400;color:var(--brand);
+    transition:.2s;flex:none;
+  }
+  details.faq[open] summary::after{content:"−";}
+  details.faq .faq-body{
+    padding:0 0 18px;font-size:14.5px;color:var(--ink-soft);
+    border-top:1px solid var(--line);padding-top:14px;
+  }
+
+  /* ---------- 提示条 ---------- */
+  .tip-band{
+    background:linear-gradient(120deg,#fff6f1,#fffdfb);
+    border:1px solid #ffe0d1;border-radius:18px;padding:30px 32px;
+    display:flex;gap:24px;align-items:flex-start;
+  }
+  .tip-band .tip-ico{
+    flex:none;width:52px;height:52px;border-radius:14px;background:#fff;
+    border:1px solid #ffe0d1;display:flex;align-items:center;justify-content:center;font-size:24px;
+  }
+  .tip-band h3{margin:0 0 8px;font-size:18px;}
+  .tip-band p{margin:0 0 8px;font-size:14.5px;color:var(--ink-soft);}
+  .tip-band p:last-child{margin-bottom:0;}
+
+  /* ---------- 页脚 ---------- */
+  footer.site-footer{
+    background:#171a24;color:#b7bdcb;margin-top:20px;padding:46px 0 26px;font-size:14px;
+  }
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;}
+  .footer-grid h4{color:#fff;font-size:15px;margin:0 0 14px;}
+  .footer-grid p{margin:0 0 10px;line-height:1.8;color:#8f96a6;}
+  .footer-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+  .footer-grid ul a{color:#b7bdcb;transition:.2s;}
+  .footer-grid ul a:hover{color:var(--brand);}
+  .footer-bottom{
+    border-top:1px solid #262b38;margin-top:34px;padding-top:20px;
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    color:#767d8d;font-size:13px;
+  }
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;gap:32px;}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .guide-layout{grid-template-columns:1fr;}
+    .rank-wrap{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:768px){
+    .main-nav{display:none;}
+    .hero{padding:38px 0 34px;}
+    .hero h1{font-size:27px;}
+    section{padding:38px 0;}
+    .section-head h2{font-size:22px;}
+    .tip-band{flex-direction:column;padding:24px;}
+  }
+  @media (max-width:520px){
+    .cat-grid{grid-template-columns:1fr;}
+    .hero-actions .btn{width:100%;justify-content:center;}
+    .footer-grid{grid-template-columns:1fr;}
+    .logo small{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">熊</span>
+      <span>大熊看漫<small>漫画阅读入口导航</small></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#categories">漫画分类</a>
+      <a href="#guide">访问指南</a>
+      <a href="#ranking">热门推荐</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a class="header-cta" href="#guide">如何访问</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag">🔍 网址导航 · 阅读方法 · 问题排查</span>
+        <h1>大熊看漫网址：<em>找对入口</em>，安心看漫画</h1>
+        <p class="lead">
+          很多漫画读者搜索“大熊看漫网址”，真正想解决的是三件事：入口在哪里、站内有哪些内容、访问不顺时怎么办。
+          本页围绕这三点整理了一份可直接使用的说明，帮助你判断入口是否可靠、如何按分类找书，以及阅读时常见的加载与显示问题该怎么处理。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#guide">查看访问步骤</a>
+          <a class="btn btn-ghost" href="#categories">浏览漫画分类</a>
+        </div>
+        <div class="hero-points">
+          <span><i class="dot"></i>按题材快速定位</span>
+          <span><i class="dot"></i>移动端阅读更省流量</span>
+          <span><i class="dot"></i>注意辨别仿冒站点</span>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <h2>新手三步走 <span class="badge">快速上手</span></h2>
+        <p class="sub">第一次接触这类漫画站点，按下面的顺序操作最省事。</p>
+        <ul class="quick-list">
+          <li>
+            <span class="quick-num">1</span>
+            <div>
+              <strong>确认入口来源</strong>
+              <small>优先使用自己长期收藏的地址，或从可信的书友分享中获取，不要轻信搜索结果里标注“官方”的陌生弹窗链接。</small>
+            </div>
+          </li>
+          <li>
+            <span class="quick-num">2</span>
+            <div>
+              <strong>熟悉站内结构</strong>
+              <small>多数漫画站首页会提供分类、排行、更新列表和搜索框，先记住这几处，找书效率会明显提高。</small>
+            </div>
+          </li>
+          <li>
+            <span class="quick-num">3</span>
+            <div>
+              <strong>调整阅读设置</strong>
+              <small>把翻页模式、图片清晰度和阅读方向设置好，能减少大量手动操作，长章节阅读体验差别很大。</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Categories</div>
+        <h2>常见漫画分类与找书思路</h2>
+        <p>不同漫画站点的分类命名略有差异，但主干题材基本相通。先确定自己想看的类型，再配合排行和更新列表，通常几分钟内就能锁定目标作品。</p>
+      </div>
+
+      <div class="cat-grid">
+        <article class="cat-card">
+          <div class="cat-icon">🔥</div>
+          <h3>热血少年</h3>
+          <p>以成长、战斗、伙伴羁绊为主线，更新频率通常较高，适合追更阅读。</p>
+          <div class="tags"><span>冒险</span><span>战斗</span><span>成长</span></div>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🌸</div>
+          <h3>恋爱日常</h3>
+          <p>节奏舒缓，单话篇幅较短，适合碎片时间阅读，也常被改编成动画。</p>
+          <div class="tags"><span>校园</span><span>治愈</span><span>日常</span></div>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🌀</div>
+          <h3>奇幻异世界</h3>
+          <p>世界观设定丰富，常伴随转生、魔法、冒险公会等经典元素，长线作品较多。</p>
+          <div class="tags"><span>魔法</span><span>转生</span><span>冒险</span></div>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🕵️</div>
+          <h3>悬疑推理</h3>
+          <p>注重剧情铺陈与反转，建议按顺序阅读，跳章容易错过关键伏笔。</p>
+          <div class="tags"><span>推理</span><span>惊悚</span><span>剧情</span></div>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🍜</div>
+          <h3>生活美食</h3>
+          <p>以美食、职场、家庭等现实题材为主，画面细节丰富，适合轻松阅读。</p>
+          <div class="tags"><span>美食</span><span>职场</span><span>温情</span></div>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">⚔️</div>
+          <h3>历史武侠</h3>
+          <p>常以古代或架空历史为背景，画风偏写实，叙事节奏相对沉稳。</p>
+          <div class="tags"><span>武侠</span><span>历史</span><span>群像</span></div>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">😂</div>
+          <h3>搞笑吐槽</h3>
+          <p>单话结构独立，随时翻开都能读，适合作为主追作品之外的调剂。</p>
+          <div class="tags"><span>喜剧</span><span>短篇</span><span>轻松</span></div>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon">🛸</div>
+          <h3>科幻机战</h3>
+          <p>设定门槛相对较高，建议先看简介和读者评价，再决定是否入坑。</p>
+          <div class="tags"><span>科幻</span><span>机甲</span><span>末世</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 访问指南 -->
+  <section id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">How to</div>
+        <h2>访问与阅读的完整操作流程</h2>
+        <p>下面这套流程适用于绝大多数漫画阅读站点。即使站点界面改版，核心逻辑也不会变，照着做基本能解决大部分“找不到入口”“打不开页面”的困扰。</p>
+      </div>
+
+      <div class="guide-layout">
+        <div class="steps">
+          <div class="step">
+            <div class="step-idx">01</div>
+            <div>
+              <h3>保存一个稳定入口</h3>
+              <p>把确认可用的地址加入浏览器书签，并记下备用地址。漫画站点域名偶尔会调整，只靠一次搜索记录很容易在需要时找不到。建议同时在手机和电脑各存一份。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-idx">02</div>
+            <div>
+              <h3>用搜索框代替逐页翻找</h3>
+              <p>如果已经知道作品名，直接在站内搜索框输入关键词最快。搜索时尽量用作品全名或较独特的短词，避免使用“漫画”“最新”这类过于宽泛的词，否则结果会非常杂乱。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-idx">03</div>
+            <div>
+              <h3>从更新列表判断活跃度</h3>
+              <p>更新列表能直观反映站点的内容维护情况。如果某个分类长期没有新内容，或者章节列表存在大量断档，说明该分类的资源可能并不完整，可以换个分类或换部作品。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-idx">04</div>
+            <div>
+              <h3>设置好阅读参数</h3>
+              <p>常见设置包括翻页方向、单页或双页显示、图片宽度自适应。竖屏手机建议使用单页上下滑动，平板或电脑横屏可以尝试双页模式，接近纸质书的阅读感受。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-idx">05</div>
+            <div>
+              <h3>遇到加载慢先排查网络</h3>
+              <p>图片长时间空白，多数情况下与网络环境有关。可以先切换 Wi-Fi 与移动数据对比，再清理浏览器缓存。如果只是个别章节打不开，也可能是该章节图片源本身存在问题。</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <h3>访问安全提醒</h3>
+          <ul class="notice-list">
+            <li><strong>警惕仿冒页面。</strong>名称相似、界面粗糙、频繁弹出新窗口的站点，建议直接关闭，不要输入任何账号信息。</li>
+            <li><strong>不随意下载安装包。</strong>正规的网页阅读通常不需要额外安装软件，遇到强制下载提示要格外谨慎。</li>
+            <li><strong>留意页面跳转。</strong>点击章节后如果跳转到与阅读无关的页面，说明该入口可能已被替换，建议回到书签重新进入。</li>
+            <li><strong>保护个人信息。</strong>阅读漫画一般无需提供手机号、身份证等敏感信息，被要求填写时应立即停止操作。</li>
+            <li><strong>支持正版内容。</strong>有条件时优先选择官方授权平台，这也是作品能持续更新的重要保障。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 排行与推荐 -->
+  <section id="ranking">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Picks</div>
+        <h2>按阅读偏好挑选作品的方向参考</h2>
+        <p>这里不罗列具体作品名称，而是给出挑选思路。不同站点的榜单口径不一，掌握判断方法比记住某一份榜单更实用。</p>
+      </div>
+
+      <div class="rank-wrap">
+        <div class="rank-col">
+          <h3>适合追更的题材特征 <span>更新稳定优先</span></h3>
+          <ul class="rank-list">
+            <li>
+              <span class="rank-no">01</span>
+              <div class="rank-info">
+                <strong>长篇连载型</strong>
+                <small>章节数量多、更新周期固定，适合长期跟随</small>
+              </div>
+              <span class="rank-tag">耐读</span>
+            </li>
+            <li>
+              <span class="rank-no">02</span>
+              <div class="rank-info">
+                <strong>单元剧结构</strong>
+                <small>每话相对独立，中断一段时间也不影响理解</small>
+              </div>
+              <span class="rank-tag">灵活</span>
+            </li>
+            <li>
+              <span class="rank-no">03</span>
+              <div class="rank-info">
+                <strong>强剧情主线</strong>
+                <small>伏笔密集，适合集中时间连续阅读</small>
+              </div>
+              <span class="rank-tag">沉浸</span>
+            </li>
+            <li>
+              <span class="rank-no">04</span>
+              <div class="rank-info">
+                <strong>轻松短篇</strong>
+                <small>单话几分钟读完，通勤或睡前都合适</small>
+              </div>
+              <span class="rank-tag">轻量</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rank-col">
+          <h3>挑选作品时的判断要点 <span>避免踩坑</span></h3>
+          <ul class="rank-list">
+            <li>
+              <span class="rank-no">01</span>
+              <div class="rank-info">
+                <strong>先看简介再看正文</strong>
+                <small>简介能快速判断题材是否符合口味</small>
+              </div>
+              <span class="rank-tag">省时</span>
+            </li>
+            <li>
+              <span class="rank-no">02</span>
+              <div class="rank-info">
+                <strong>留意画风是否统一</strong>
+                <small>部分作品前期与后期画风差异较大</small>
+              </div>
+              <span class="rank-tag">观感</span>
+            </li>
+            <li>
+              <span class="rank-no">03</span>
+              <div class="rank-info">
+                <strong>确认章节是否完整</strong>
+                <small>章节列表断档会影响整体阅读体验</small>
+              </div>
+              <span class="rank-tag">完整</span>
+            </li>
+            <li>
+              <span class="rank-no">04</span>
+              <div class="rank-info">
+                <strong>参考读者讨论热度</strong>
+                <small>讨论活跃的作品通常质量较有保障</small>
+              </div>
+              <span class="rank-tag">口碑</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 提示条 -->
+  <section>
+    <div class="wrap">
+      <div class="tip-band">
+        <div class="tip-ico">📱</div>
+        <div>
+          <h3>移动端阅读的几个小建议</h3>
+          <p>手机屏幕较小，建议开启图片自适应宽度，避免左右拖动。阅读长章节前先确认电量与网络状态，中途断网容易造成图片加载不全。</p>
+          <p>如果经常在同一时间阅读，可以把常用入口添加到手机桌面，减少每次重新搜索的步骤。夜间阅读时适当调低屏幕亮度，长时间看漫画对眼睛的负担并不小。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">FAQ</div>
+        <h2>关于大熊看漫网址的常见问题</h2>
+        <p>以下问题来自漫画读者在寻找入口和阅读过程中较常遇到的情况，答案以通用经验为准，具体情况可能因站点调整而变化。</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq" open>
+          <summary>为什么搜索到的地址有时打不开？</summary>
+          <div class="faq-body">
+            漫画类站点的域名可能因运营调整、线路变更等原因发生改变，这是比较常见的情况。遇到打不开时，可以先确认自己的网络是否正常，再尝试切换网络环境。如果多个网络下都无法访问，通常说明该地址已经失效，需要寻找更新后的入口。建议平时保留两到三个备用地址。
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>怎么判断一个漫画入口是否可靠？</summary>
+          <div class="faq-body">
+            可以从几个方面观察：页面结构是否清晰、是否频繁强制弹出新窗口、是否要求下载不明软件、是否索要与阅读无关的个人信息。可靠的阅读入口通常以内容浏览为主，不会在阅读过程中不断打断操作。若页面出现大量与漫画无关的广告或跳转，建议谨慎使用。
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>手机上阅读图片显示不完整怎么办？</summary>
+          <div class="faq-body">
+            先尝试下拉刷新页面，让图片重新加载。如果仍然不完整，可以清理浏览器缓存后重新进入。部分情况下是图片源本身的问题，换个章节或稍后再试可能就恢复正常。另外，关闭浏览器的省流量模式有时也能改善图片加载效果。
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>阅读时需要注册账号吗？</summary>
+          <div class="faq-body">
+            多数漫画阅读站点的浏览功能不需要注册，注册通常只用于收藏、评论或阅读记录同步等功能。如果某个页面在打开正文前就强制要求注册，并且索要较多个人信息，建议先判断其必要性，不要轻易提交敏感信息。
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>怎样更快找到自己想看的漫画类型？</summary>
+          <div class="faq-body">
+            优先使用站内分类和标签筛选，比在搜索框里输入宽泛关键词更高效。如果已经知道作品名，直接搜索全名最准确。此外，更新列表和排行榜可以作为发现新作品的补充渠道，尤其适合还没有明确目标时浏览。
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>阅读漫画时需要注意什么？</summary>
+          <div class="faq-body">
+            一是注意用眼时长，连续阅读较长时间后适当休息；二是留意流量消耗，图片较多的章节在移动数据下会占用一定流量；三是尊重创作者权益，有条件时选择正版渠道阅读，这也是优质内容能够持续产出和更新的基础。
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>大熊看漫网址</h4>
+        <p>一个围绕漫画阅读入口、访问方法与阅读技巧整理的导航说明页，帮助漫画爱好者更快找到想看的内容，同时提醒注意访问安全。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#categories">漫画分类</a></li>
+          <li><a href="#guide">访问指南</a></li>
+          <li><a href="#ranking">挑选参考</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>阅读建议</h4>
+        <ul>
+          <li><a href="#guide">入口保存方法</a></li>
+          <li><a href="#guide">加载问题排查</a></li>
+          <li><a href="#faq">移动端设置</a></li>
+          <li><a href="#faq">安全访问提醒</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>使用说明</h4>
+        <ul>
+          <li><a href="#top">返回顶部</a></li>
+          <li><a href="#categories">按题材找书</a></li>
+          <li><a href="#ranking">选择作品</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>本页为漫画阅读入口与使用方法的说明性页面，不提供漫画内容存储与分发服务。</span>
+      <span>请遵守相关法律法规，支持正版阅读。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动（兼容不支持 scroll-behavior 的浏览器）
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href');
+      if (id.length > 1) {
+        var target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  // FAQ 手风琴：同时只展开一个
+  var faqs = document.querySelectorAll('details.faq');
+  faqs.forEach(function (item) {
+    item.addEventListener('toggle', function () {
+      if (this.open) {
+        faqs.forEach(function (other) {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+  </html>
