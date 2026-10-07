@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51爆料-热点线索聚合与事件梳理平台</title>
+<meta name="description" content="51爆料是一个聚合网络热点线索、事件脉络与网友讨论的资讯平台，提供话题分类、热榜速览、爆料发布指引与信息核实方法，帮助读者快速了解事件进展。">
+<meta name="keywords" content="51爆料,爆料,热点线索,事件梳理,网友爆料,话题聚合,资讯平台">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --ink: #1c1f26;
+  --ink-soft: #4a505e;
+  --line: #e3e6ec;
+  --bg: #f6f7fa;
+  --card: #ffffff;
+  --brand: #d7263d;
+  --brand-dark: #a81a2d;
+  --brand-soft: #fdeef0;
+  --accent: #1f6feb;
+  --radius: 10px;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+.wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+/* 顶部信息条 */
+.topbar {
+  background: #16181d;
+  color: #b9bec9;
+  font-size: 13px;
+}
+.topbar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  height: 38px;
+}
+.topbar .tb-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff4d5e;
+  display: inline-block;
+  box-shadow: 0 0 0 3px rgba(255, 77, 94, 0.18);
+  flex: none;
+}
+.topbar nav {
+  display: flex;
+  gap: 16px;
+}
+.topbar nav a:hover {
+  color: #fff;
+}
+/* 页眉 */
+.site-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  height: 68px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #e0334a, #a81a2d);
+  color: #fff;
+  font-weight: 800;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.5px;
+}
+.logo-text b {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.logo-text span {
+  display: block;
+  font-size: 11px;
+  color: #8b91a0;
+  letter-spacing: 1px;
+}
+.main-nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+.main-nav a {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  transition: background 0.2s, color 0.2s;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  background: var(--brand-soft);
+  color: var(--brand-dark);
+  font-weight: 600;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 6px 0 14px;
+  height: 38px;
+}
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 150px;
+  font-size: 14px;
+  color: var(--ink);
+}
+.search-box button {
+  border: none;
+  background: var(--brand);
+  color: #fff;
+  height: 28px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--brand);
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary:hover {
+  background: var(--brand-dark);
+}
+.btn-ghost {
+  display: inline-block;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  border-color: var(--brand);
+  color: var(--brand-dark);
+}
+/* 首屏 */
+.hero {
+  background: linear-gradient(160deg, #1b1e26 0%, #2a2030 55%, #3a1d26 100%);
+  color: #fff;
+  padding: 46px 0 40px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 34px;
+  align-items: start;
+}
+.hero h1 {
+  font-size: 34px;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #ff7b8a;
+}
+.hero p.lead {
+  color: #c7cbd6;
+  font-size: 15.5px;
+  max-width: 620px;
+  margin-bottom: 22px;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.hero-actions .btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #fff;
+}
+.hero-actions .btn-ghost:hover {
+  border-color: #ff7b8a;
+  color: #ffb3bd;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-tags a {
+  font-size: 13px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  color: #dfe3ec;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.hero-tags a:hover {
+  background: rgba(255, 123, 138, 0.22);
+  color: #fff;
+}
+/* 热榜面板 */
+.hot-panel {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 20px 20px 12px;
+  backdrop-filter: blur(4px);
+}
+.hot-panel h2 {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  color: #fff;
+}
+.hot-panel h2 span {
+  font-size: 12px;
+  color: #9aa1b0;
+  font-weight: 400;
+}
+.hot-list {
+  list-style: none;
+}
+.hot-list li {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  align-items: flex-start;
+}
+.hot-list li:last-child {
+  border-bottom: none;
+}
+.rank {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #cfd4de;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+}
+.rank.top {
+  background: var(--brand);
+  color: #fff;
+}
+.hot-list .h-text {
+  flex: 1;
+}
+.hot-list .h-text a {
+  color: #eef0f5;
+  font-size: 14.5px;
+  display: block;
+}
+.hot-list .h-text a:hover {
+  color: #ff9aa6;
+}
+.hot-list .h-meta {
+  font-size: 12px;
+  color: #8e95a4;
+  margin-top: 2px;
+}
+/* 主体布局 */
+.main-area {
+  padding: 40px 0 10px;
+}
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.section-head h2 {
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
+.section-head h2::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 20px;
+  border-radius: 3px;
+  background: var(--brand);
+  margin-right: 10px;
+  vertical-align: -3px;
+}
+.section-head .sub {
+  font-size: 13.5px;
+  color: #8b91a0;
+  margin-top: 4px;
+}
+.section-head .more {
+  font-size: 13.5px;
+  color: var(--accent);
+  flex: none;
+}
+.section-head .more:hover {
+  text-decoration: underline;
+}
+/* 分类导航 */
+.cat-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 38px;
+}
+.cat-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 12px;
+  text-align: center;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+}
+.cat-item:hover {
+  transform: translateY(-3px);
+  border-color: #f0c3c9;
+  box-shadow: 0 8px 20px rgba(215, 38, 61, 0.08);
+}
+.cat-item .ico {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 6px;
+}
+.cat-item b {
+  display: block;
+  font-size: 14.5px;
+}
+.cat-item span {
+  font-size: 12px;
+  color: #8b91a0;
+}
+/* 爆料卡片网格 */
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.feed-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.feed-card:hover {
+  box-shadow: 0 10px 26px rgba(28, 31, 38, 0.07);
+  transform: translateY(-2px);
+}
+.feed-card .tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  color: var(--brand-dark);
+  background: var(--brand-soft);
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.feed-card h3 {
+  font-size: 16.5px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.feed-card h3 a:hover {
+  color: var(--brand-dark);
+}
+.feed-card p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  flex: 1;
+  margin-bottom: 14px;
+}
+.feed-card .card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: #8b91a0;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+.feed-card .card-foot .status {
+  color: #1a8f5a;
+}
+.feed-card .card-foot .status.checking {
+  color: #c98a12;
+}
+/* 两栏区 */
+.split {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 26px;
+  margin-top: 42px;
+}
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.panel > h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.panel > .panel-sub {
+  font-size: 13px;
+  color: #8b91a0;
+  margin-bottom: 16px;
+}
+/* 时间线 */
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 20px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--line);
+}
+.timeline li {
+  position: relative;
+  padding-bottom: 18px;
+}
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--brand);
+}
+.timeline .t-time {
+  font-size: 12.5px;
+  color: var(--brand-dark);
+  font-weight: 600;
+}
+.timeline .t-title {
+  font-size: 15px;
+  margin: 2px 0 3px;
+}
+.timeline .t-desc {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+/* 侧栏列表 */
+.side-list {
+  list-style: none;
+}
+.side-list li {
+  padding: 11px 0;
+  border-bottom: 1px dashed var(--line);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.side-list li:last-child {
+  border-bottom: none;
+}
+.side-list .num {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b9bec9;
+  width: 18px;
+  flex: none;
+}
+.side-list .num.hot {
+  color: var(--brand);
+}
+.side-list a {
+  font-size: 14.5px;
+}
+.side-list a:hover {
+  color: var(--brand-dark);
+}
+.side-list .meta {
+  display: block;
+  font-size: 12px;
+  color: #8b91a0;
+  margin-top: 2px;
+}
+/* 指南区 */
+.guide {
+  margin-top: 42px;
+}
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.guide-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.guide-card .step {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--brand);
+  margin-bottom: 8px;
+}
+.guide-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.guide-card p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+/* 提示条 */
+.notice {
+  margin-top: 42px;
+  background: #fffaf0;
+  border: 1px solid #f3e2be;
+  border-left: 4px solid #e0a92c;
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+.notice h2 {
+  font-size: 16px;
+  color: #8a6412;
+  margin-bottom: 8px;
+}
+.notice ul {
+  padding-left: 20px;
+  font-size: 13.5px;
+  color: #6d5a26;
+}
+.notice li {
+  margin-bottom: 5px;
+}
+/* FAQ */
+.faq {
+  margin-top: 42px;
+}
+.faq-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.faq-item h3 {
+  font-size: 15.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.faq-item h3::before {
+  content: "Q";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 6px;
+  background: var(--brand-soft);
+  color: var(--brand-dark);
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+.faq-item p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+/* 页脚 */
+.site-footer {
+  margin-top: 52px;
+  background: #16181d;
+  color: #9aa1b0;
+  padding: 40px 0 24px;
+  font-size: 13.5px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 28px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid #262a33;
+}
+.footer-grid h4 {
+  color: #e6e9ef;
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+.footer-grid p {
+  line-height: 1.8;
+}
+.footer-grid ul {
+  list-style: none;
+}
+.footer-grid ul li {
+  margin-bottom: 8px;
+}
+.footer-grid ul a:hover {
+  color: #ff9aa6;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  font-size: 12.5px;
+  color: #7b8291;
+}
+/* 响应式 */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .cat-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .feed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .guide-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .main-nav {
+    display: none;
+  }
+}
+@media (max-width: 720px) {
+  .topbar nav {
+    display: none;
+  }
+  .header-inner {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 12px 0;
+    gap: 12px;
+  }
+  .search-box {
+    flex: 1;
+  }
+  .search-box input {
+    width: 100%;
+  }
+  .hero {
+    padding: 32px 0 30px;
+  }
+  .hero h1 {
+    font-size: 26px;
+  }
+  .cat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feed-grid {
+    grid-template-columns: 1fr;
+  }
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+  .faq-list {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <span class="dot"></span>
+      <span>51爆料 · 线索聚合中，请自行核实信息真伪</span>
+    </div>
+    <nav>
+      <a href="#feed">最新爆料</a>
+      <a href="#guide">发布指引</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">51</span>
+      <span class="logo-text">
+        <b>51爆料</b>
+        <span>HOTLINE AGGREGATOR</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a class="active" href="#top">首页</a>
+      <a href="#cat">话题分类</a>
+      <a href="#feed">最新爆料</a>
+      <a href="#timeline">事件脉络</a>
+      <a href="#guide">发布指引</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-box">
+        <input type="text" placeholder="搜索话题、事件或关键词" aria-label="搜索话题">
+        <button type="button">搜索</button>
+      </div>
+      <a class="btn-primary" href="#guide">我要爆料</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>51爆料：把零散线索整理成<em>看得懂的事件脉络</em></h1>
+        <p class="lead">
+          网络上每天出现大量说法、截图与转述，真假混杂、前后矛盾。51爆料聚合公开可查的热点线索，
+          按话题归类、按时间排序，标注信息来源与核实状态，帮助你在信息洪流中先看清"发生了什么"，
+          再判断"该不该信"。
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#feed">浏览最新爆料</a>
+          <a class="btn-ghost" href="#guide">了解发布规则</a>
+        </div>
+        <div class="hero-tags">
+          <a href="#cat">社会民生</a>
+          <a href="#cat">消费维权</a>
+          <a href="#cat">职场话题</a>
+          <a href="#cat">网络热点</a>
+          <a href="#cat">辟谣核实</a>
+          <a href="#cat">行业观察</a>
+        </div>
+      </div>
+
+      <aside class="hot-panel" aria-label="热度速览">
+        <h2>热度速览 <span>按讨论量排序</span></h2>
+        <ul class="hot-list">
+          <li>
+            <span class="rank top">1</span>
+            <span class="h-text">
+              <a href="#feed">某地外卖配送费调整引发骑手与商家讨论</a>
+              <span class="h-meta">消费 · 多方说法待核实</span>
+            </span>
+          </li>
+          <li>
+            <span class="rank top">2</span>
+            <span class="h-text">
+              <a href="#feed">短视频平台"AI 换脸"带货现象被集中反馈</a>
+              <span class="h-meta">网络 · 平台已回应</span>
+            </span>
+          </li>
+          <li>
+            <span class="rank top">3</span>
+            <span class="h-text">
+              <a href="#feed">小区公共收益公示问题成为多地讨论焦点</a>
+              <span class="h-meta">民生 · 持续跟进</span>
+            </span>
+          </li>
+          <li>
+            <span class="rank">4</span>
+            <span class="h-text">
+              <a href="#feed">招聘平台简历信息保护话题再被提起</a>
+              <span class="h-meta">职场 · 建议核实</span>
+            </span>
+          </li>
+          <li>
+            <span class="rank">5</span>
+            <span class="h-text">
+              <a href="#feed">"先涨后降"促销套路相关讨论增多</a>
+              <span class="h-meta">消费 · 已有案例梳理</span>
+            </span>
+          </li>
+          <li>
+            <span class="rank">6</span>
+            <span class="h-text">
+              <a href="#feed">旧图新传类谣言在社交群组中反复出现</a>
+              <span class="h-meta">辟谣 · 已标注来源</span>
+            </span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <div class="wrap main-area">
+
+    <!-- 分类 -->
+    <section id="cat">
+      <div class="section-head">
+        <div>
+          <h2>话题分类</h2>
+          <p class="sub">按领域浏览，快速定位你关注的那一类线索</p>
+        </div>
+        <a class="more" href="#feed">查看全部 →</a>
+      </div>
+      <div class="cat-strip">
+        <a class="cat-item" href="#feed">
+          <span class="ico">🏙️</span>
+          <b>社会民生</b>
+          <span>社区、交通、公共服务</span>
+        </a>
+        <a class="cat-item" href="#feed">
+          <span class="ico">🛒</span>
+          <b>消费维权</b>
+          <span>价格、售后、合同</span>
+        </a>
+        <a class="cat-item" href="#feed">
+          <span class="ico">💼</span>
+          <b>职场话题</b>
+          <span>招聘、薪酬、用工</span>
+        </a>
+        <a class="cat-item" href="#feed">
+          <span class="ico">📱</span>
+          <b>网络热点</b>
+          <span>平台动态、内容争议</span>
+        </a>
+        <a class="cat-item" href="#feed">
+          <span class="ico">🔍</span>
+          <b>辟谣核实</b>
+          <span>谣言识别、来源追溯</span>
+        </a>
+        <a class="cat-item" href="#feed">
+          <span class="ico">📊</span>
+          <b>行业观察</b>
+          <span>趋势、规则、案例</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 最新爆料 -->
+    <section id="feed">
+      <div class="section-head">
+        <div>
+          <h2>最新爆料</h2>
+          <p class="sub">每条线索都标注来源类型与核实状态，请勿仅凭标题下结论</p>
+        </div>
+        <a class="more" href="#timeline">按时间线看 →</a>
+      </div>
+      <div class="feed-grid">
+
+        <article class="feed-card">
+          <span class="tag">消费维权</span>
+          <h3><a href="#feed">外卖配送费调整：骑手与商家说法存在差异</a></h3>
+          <p>多地网友反映配送费用结构出现变化，骑手端与商家端显示金额不一致。目前平台尚未发布统一说明，具体规则建议以官方公告为准。</p>
+          <div class="card-foot">
+            <span>来源：网友投稿汇总</span>
+            <span class="status checking">核实中</span>
+          </div>
+        </article>
+
+        <article class="feed-card">
+          <span class="tag">网络热点</span>
+          <h3><a href="#feed">AI 换脸带货：平台已就相关内容作出回应</a></h3>
+          <p>有用户反馈在短视频中看到疑似未经授权使用他人形象进行商品推广的内容。平台表示将依据规则处理，涉及肖像权的问题可走投诉通道。</p>
+          <div class="card-foot">
+            <span>来源：公开回应整理</span>
+            <span class="status">已有回应</span>
+          </div>
+        </article>
+
+        <article class="feed-card">
+          <span class="tag">社会民生</span>
+          <h3><a href="#feed">小区公共收益公示：业主关心钱去哪了</a></h3>
+          <p>电梯广告、公共车位等收益归属与公示方式，是多个小区业主讨论的重点。相关事项通常依据物业服务合同与地方管理规定处理。</p>
+          <div class="card-foot">
+            <span>来源：多地讨论汇总</span>
+            <span class="status checking">持续跟进</span>
+          </div>
+        </article>
+
+        <article class="feed-card">
+          <span class="tag">职场话题</span>
+          <h3><a href="#feed">求职简历信息保护：投递前先看清授权条款</a></h3>
+          <p>部分求职者担心简历被二次流转。建议在投递前确认平台隐私政策中关于信息使用范围的表述，并保留投递记录以便追溯。</p>
+          <div class="card-foot">
+            <span>来源：用户经验分享</span>
+            <span class="status">建议核实</span>
+          </div>
+        </article>
+
+        <article class="feed-card">
+          <span class="tag">消费维权</span>
+          <h3><a href="#feed">"先涨后降"促销套路：如何留好证据</a></h3>
+          <p>促销期价格是否真的更低，需要对比历史页面。建议下单前截图保存商品页价格与活动说明，必要时可向平台或监管部门反映。</p>
+          <div class="card-foot">
+            <span>来源：案例梳理</span>
+            <span class="status">已有案例</span>
+          </div>
+        </article>
+
+        <article class="feed-card">
+          <span class="tag">辟谣核实</span>
+          <h3><a href="#feed">旧图新传：同一张图片被反复配不同说明</a></h3>
+          <p>社交群组中流传的部分图片实为往年素材，被重新配上新的文字说明。遇到此类内容，可先做反向图片检索再决定是否转发。</p>
+          <div class="card-foot">
+            <span>来源：来源追溯</span>
+            <span class="status">已标注</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 事件脉络 + 侧栏 -->
+    <section id="timeline" class="split">
+      <div class="panel">
+        <h2>事件脉络示例</h2>
+        <p class="panel-sub">以"某消费争议话题"为例，展示线索如何按时间被整理</p>
+        <ol class="timeline">
+          <li>
+            <div class="t-time">第 1 阶段 · 线索出现</div>
+            <div class="t-title">个别用户在社交平台发布经历描述</div>
+            <div class="t-desc">内容以个人叙述为主，缺少订单截图等佐证材料，此时仅作为线索记录，不作结论。</div>
+          </li>
+          <li>
+            <div class="t-time">第 2 阶段 · 讨论扩散</div>
+            <div class="t-title">相似经历被更多人补充，出现共性描述</div>
+            <div class="t-desc">多条独立投稿指向类似环节，话题度上升。此阶段重点记录时间、地点、涉及主体等要素。</div>
+          </li>
+          <li>
+            <div class="t-time">第 3 阶段 · 相关方回应</div>
+            <div class="t-title">平台或企业通过公告、客服等渠道作出说明</div>
+            <div class="t-desc">回应内容与用户描述是否一致，是判断后续走向的关键。建议对照原文而非二次转述。</div>
+          </li>
+          <li>
+            <div class="t-time">第 4 阶段 · 信息沉淀</div>
+            <div class="t-title">话题热度回落，形成可查证的过程记录</div>
+            <div class="t-desc">将各方说法、时间点、证据类型归档，方便后来者了解完整过程，避免被断章取义的内容误导。</div>
+          </li>
+        </ol>
+      </div>
+
+      <aside class="panel">
+        <h2>讨论热度榜</h2>
+        <p class="panel-sub">依据公开讨论量整理，仅供参考</p>
+        <ul class="side-list">
+          <li>
+            <span class="num hot">01</span>
+            <span>
+              <a href="#feed">配送费结构变化的相关讨论</a>
+              <span class="meta">消费 · 多方说法并存</span>
+            </span>
+          </li>
+          <li>
+            <span class="num hot">02</span>
+            <span>
+              <a href="#feed">AI 换脸带货的合规边界</a>
+              <span class="meta">网络 · 平台已回应</span>
+            </span>
+          </li>
+          <li>
+            <span class="num hot">03</span>
+            <span>
+              <a href="#feed">公共收益公示该怎么看</a>
+              <span class="meta">民生 · 持续跟进</span>
+            </span>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <span>
+              <a href="#feed">简历投递中的信息授权范围</a>
+              <span class="meta">职场 · 建议核实</span>
+            </span>
+          </li>
+          <li>
+            <span class="num">05</span>
+            <span>
+              <a href="#feed">促销价格的历史对比方法</a>
+              <span class="meta">消费 · 实用技巧</span>
+            </span>
+          </li>
+          <li>
+            <span class="num">06</span>
+            <span>
+              <a href="#feed">反向图片检索的常见做法</a>
+              <span class="meta">辟谣 · 工具方法</span>
+            </span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- 发布指引 -->
+    <section id="guide" class="guide">
+      <div class="section-head">
+        <div>
+          <h2>爆料发布指引</h2>
+          <p class="sub">想让你的线索被认真对待，这几步比"标题够劲爆"更重要</p>
+        </div>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="step">STEP 01</div>
+          <h3>说清时间与地点</h3>
+          <p>具体到日期、城市或场所，能让后续核实有明确范围。模糊的"最近""某地"会大幅降低线索可用性。</p>
+        </div>
+        <div class="guide-card">
+          <div class="step">STEP 02</div>
+          <h3>提供原始材料</h3>
+          <p>订单截图、聊天记录、公告原文等一手材料，比转述更有价值。注意对身份证号、手机号等个人信息做遮挡。</p>
+        </div>
+        <div class="guide-card">
+          <div class="step">STEP 03</div>
+          <h3>区分事实与推测</h3>
+          <p>把"我看到的"和"我猜的"分开写。推测部分请明确标注，避免读者把个人判断当作已确认事实。</p>
+        </div>
+        <div class="guide-card">
+          <div class="step">STEP 04</div>
+          <h3>保留沟通记录</h3>
+          <p>与商家、平台、相关方的沟通时间与结果建议留存。一旦进入正式投诉或申诉流程，这些记录会派上用场。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 提示 -->
+    <section class="notice">
+      <h2>阅读与转发前的三点提醒</h2>
+      <ul>
+        <li>爆料内容多为当事人描述，未经权威渠道确认前，请勿将其作为事实依据进行传播或决策。</li>
+        <li>涉及具体个人或企业的内容，注意避免人身攻击、隐私泄露与不实指控，相关争议应通过合法途径解决。</li>
+        <li>遇到紧急情况、人身安全风险或涉嫌违法事项，请直接联系公安机关或相关主管部门，不要仅依赖网络曝光。</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="section-head">
+        <div>
+          <h2>常见问题</h2>
+          <p class="sub">关于线索、核实与使用的常见疑问</p>
+        </div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>51爆料上的内容都是真的吗？</h3>
+          <p>不能这样理解。平台呈现的是线索与讨论的整理，其中既有已获回应的内容，也有仍处于核实阶段的说法。每条内容都会标注来源类型与状态，请结合多方信息自行判断。</p>
+        </div>
+        <div class="faq-item">
+          <h3>什么样的爆料更容易被采用？</h3>
+          <p>时间地点明确、有原始材料支撑、事实与推测分开表述的线索，通常更容易被整理和跟进。仅有一句情绪化描述的投稿，往往难以推进。</p>
+        </div>
+        <div class="faq-item">
+          <h3>发布内容时要注意哪些法律边界？</h3>
+          <p>避免编造事实、泄露他人隐私、使用侮辱性表述。涉及纠纷时，建议同步通过消费者投诉、劳动仲裁、诉讼等正式渠道处理，网络信息不能替代法律程序。</p>
+        </div>
+        <div class="faq-item">
+          <h3>如何判断一条爆料是否可信？</h3>
+          <p>可以看三点：是否有可验证的原始材料、是否有多个独立来源相互印证、相关方是否作出回应。三者都缺失时，建议先观望再判断。</p>
+        </div>
+        <div class="faq-item">
+          <h3>看到不实信息该怎么处理？</h3>
+          <p>优先保留证据，向发布平台投诉举报；若涉及自身权益受损，可通过法律途径主张权利。不建议以同样方式发布不实内容进行"反击"。</p>
+        </div>
+        <div class="faq-item">
+          <h3>平台会代替我维权吗？</h3>
+          <p>不会。51爆料提供的是信息聚合与脉络梳理，不介入具体纠纷处理，也不代表任何一方立场。实际维权仍需通过相应渠道推进。</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>51爆料</h4>
+        <p>聚合公开热点线索，梳理事件脉络，标注来源与核实状态。信息仅供参考，请以权威渠道发布为准。</p>
+      </div>
+      <div>
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="#feed">最新爆料</a></li>
+          <li><a href="#cat">话题分类</a></li>
+          <li><a href="#timeline">事件脉络</a></li>
+          <li><a href="#guide">发布指引</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>常用工具</h4>
+        <ul>
+          <li><a href="#faq">信息核实方法</a></li>
+          <li><a href="#faq">图片溯源思路</a></li>
+          <li><a href="#faq">证据留存建议</a></li>
+          <li><a href="#faq">投诉渠道说明</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>使用须知</h4>
+        <ul>
+          <li><a href="#faq">内容免责说明</a></li>
+          <li><a href="#faq">隐私保护提示</a></li>
+          <li><a href="#faq">社区交流规范</a></li>
+          <li><a href="#faq">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 51爆料 · 内容由网友投稿与公开信息整理，不代表平台立场</span>
+      <span>理性看待线索 · 拒绝造谣传谣</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动到锚点，并处理顶部固定页眉的遮挡
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var offset = 80;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  // 搜索框回车提示（不接入后端，仅作交互反馈）
+  var searchInput = document.querySelector('.search-box input');
+  var searchBtn = document.querySelector('.search-box button');
+  function doSearch() {
+    var kw = (searchInput.value || '').trim();
+    if (!kw) {
+      searchInput.focus();
+      return;
+    }
+    searchInput.value = kw;
+    searchInput.blur();
+  }
+  if (searchBtn) {
+    searchBtn.addEventListener('click', doSearch);
+  }
+  if (searchInput) {
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        doSearch();
+      }
+    });
+  }
+</script>
+
+</body>
+        </html>
