@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老鼠台twitch - 直播观看指南与平台功能全解析</title>
+<meta name="description" content="老鼠台twitch是中文用户对Twitch直播平台的俗称，本页介绍其直播分类、观看方式、账号功能、互动玩法与常见问题，帮助新用户快速上手。">
+<meta name="keywords" content="老鼠台twitch,Twitch直播,游戏直播平台,直播观看,弹幕互动,主播频道">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --purple:#9146ff;
+  --purple-dark:#6b2fd6;
+  --purple-light:#f3ecff;
+  --ink:#0e0e10;
+  --gray:#53535f;
+  --line:#e6e6ec;
+  --bg:#faf9fd;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* 顶部公告条 */
+.topbar{
+  background:linear-gradient(90deg,var(--purple-dark),var(--purple));
+  color:#fff;
+  font-size:13px;
+  text-align:center;
+  padding:8px 16px;
+  letter-spacing:.3px;
+}
+
+/* 页眉 */
+.site-header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.header-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  font-size:20px;
+  white-space:nowrap;
+}
+.logo-mark{
+  width:34px;height:34px;
+  border-radius:9px;
+  background:var(--purple);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:17px;font-weight:900;
+}
+.logo small{
+  display:block;
+  font-size:11px;
+  font-weight:400;
+  color:var(--gray);
+  letter-spacing:.5px;
+}
+.main-nav{
+  display:flex;
+  gap:22px;
+  font-size:15px;
+  font-weight:500;
+  flex:1;
+}
+.main-nav a{
+  padding:6px 2px;
+  border-bottom:2px solid transparent;
+  transition:.2s;
+  color:#26262c;
+}
+.main-nav a:hover{
+  color:var(--purple);
+  border-bottom-color:var(--purple);
+}
+.header-cta{
+  background:var(--purple);
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+  padding:9px 20px;
+  border-radius:6px;
+  white-space:nowrap;
+  transition:.2s;
+}
+.header-cta:hover{background:var(--purple-dark);}
+
+/* 首屏 */
+.hero{
+  background:radial-gradient(circle at 15% 20%,#efe4ff 0%,transparent 55%),
+             radial-gradient(circle at 88% 10%,#e2f0ff 0%,transparent 50%),
+             #fff;
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:56px 20px 60px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;
+  align-items:center;
+}
+.hero h1{
+  font-size:40px;
+  line-height:1.25;
+  font-weight:800;
+  letter-spacing:-.5px;
+}
+.hero h1 span{color:var(--purple);}
+.hero p.lead{
+  margin-top:18px;
+  font-size:16.5px;
+  color:#3c3c46;
+  max-width:560px;
+}
+.hero-tags{
+  margin-top:22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.hero-tags span{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px 14px;
+  font-size:13px;
+  color:#4a4a55;
+}
+.hero-actions{
+  margin-top:28px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.btn-primary{
+  background:var(--purple);
+  color:#fff;
+  padding:12px 26px;
+  border-radius:7px;
+  font-weight:600;
+  font-size:15px;
+  transition:.2s;
+}
+.btn-primary:hover{background:var(--purple-dark);}
+.btn-ghost{
+  border:1px solid #cfcfda;
+  padding:12px 24px;
+  border-radius:7px;
+  font-weight:600;
+  font-size:15px;
+  color:#33333c;
+  background:#fff;
+  transition:.2s;
+}
+.btn-ghost:hover{border-color:var(--purple);color:var(--purple);}
+
+/* 首屏右侧模拟直播卡 */
+.hero-panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 18px 40px -22px rgba(80,40,160,.35);
+}
+.panel-head{
+  padding:12px 16px;
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  background:linear-gradient(90deg,var(--purple),#b57bff);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.live-dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:#ff4d4d;margin-right:6px;
+  animation:blink 1.4s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.panel-body{padding:16px;}
+.stream-row{
+  display:flex;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px dashed var(--line);
+}
+.stream-row:last-child{border-bottom:none;padding-bottom:0;}
+.thumb{
+  width:88px;height:56px;
+  border-radius:7px;
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:#fff;font-weight:700;
+  letter-spacing:.5px;
+}
+.t1{background:linear-gradient(135deg,#7b2ff7,#f107a3);}
+.t2{background:linear-gradient(135deg,#1f6feb,#38bdf8);}
+.t3{background:linear-gradient(135deg,#f97316,#facc15);}
+.stream-meta b{
+  font-size:14px;
+  display:block;
+  line-height:1.4;
+}
+.stream-meta small{
+  color:var(--gray);
+  font-size:12.5px;
+}
+
+/* 通用区块 */
+.section{
+  max-width:1180px;
+  margin:0 auto;
+  padding:60px 20px;
+}
+.section-head{
+  margin-bottom:32px;
+}
+.section-head h2{
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:-.3px;
+}
+.section-head p{
+  color:var(--gray);
+  margin-top:8px;
+  font-size:15px;
+  max-width:720px;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:12.5px;
+  font-weight:700;
+  color:var(--purple);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+/* 分类网格 */
+.cat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(196px,1fr));
+  gap:16px;
+}
+.cat-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:20px 18px;
+  transition:.22s;
+}
+.cat-card:hover{
+  border-color:var(--purple);
+  transform:translateY(-3px);
+  box-shadow:0 14px 28px -18px rgba(120,70,220,.45);
+}
+.cat-card .icon{
+  font-size:22px;
+  margin-bottom:10px;
+}
+.cat-card h3{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.cat-card p{
+  font-size:13.5px;
+  color:var(--gray);
+  line-height:1.65;
+}
+
+/* 三步上手 */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.step{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:26px 22px;
+  position:relative;
+}
+.step-num{
+  width:36px;height:36px;
+  border-radius:10px;
+  background:var(--purple-light);
+  color:var(--purple-dark);
+  font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;
+  margin-bottom:14px;
+}
+.step h3{font-size:17px;margin-bottom:8px;}
+.step p{font-size:14px;color:var(--gray);}
+
+/* 功能与互动 双列 */
+.split{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:40px;
+  align-items:start;
+}
+.feature-list{list-style:none;}
+.feature-list li{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:16px 18px;
+  margin-bottom:12px;
+  display:flex;
+  gap:14px;
+}
+.feature-list .fi{
+  width:30px;height:30px;
+  flex-shrink:0;
+  border-radius:8px;
+  background:var(--purple-light);
+  color:var(--purple-dark);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;
+}
+.feature-list b{display:block;font-size:15px;margin-bottom:3px;}
+.feature-list span{font-size:13.5px;color:var(--gray);}
+
+/* 侧栏提示卡 */
+.aside-card{
+  background:#0e0e10;
+  color:#e9e9ee;
+  border-radius:14px;
+  padding:26px 24px;
+}
+.aside-card h3{
+  font-size:17px;
+  color:#fff;
+  margin-bottom:14px;
+}
+.aside-card ul{
+  list-style:none;
+  font-size:14px;
+}
+.aside-card li{
+  padding:9px 0 9px 20px;
+  position:relative;
+  color:#c3c3cf;
+  border-bottom:1px solid #232329;
+}
+.aside-card li:last-child{border-bottom:none;}
+.aside-card li::before{
+  content:"▸";
+  position:absolute;
+  left:0;
+  color:var(--purple);
+}
+.aside-note{
+  margin-top:18px;
+  font-size:12.5px;
+  color:#8b8b98;
+  line-height:1.7;
+}
+
+/* 内容文章区 */
+.article-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:26px;
+}
+.article-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:26px 24px;
+}
+.article-card h3{
+  font-size:17.5px;
+  margin-bottom:10px;
+}
+.article-card p{
+  font-size:14.5px;
+  color:#46464f;
+  margin-bottom:10px;
+}
+.article-card p:last-child{margin-bottom:0;}
+
+/* FAQ */
+.faq-wrap{
+  max-width:860px;
+  margin:0 auto;
+}
+.faq-item{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  margin-bottom:12px;
+  overflow:hidden;
+}
+.faq-q{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  font-family:inherit;
+  font-size:15.5px;
+  font-weight:700;
+  color:var(--ink);
+  padding:17px 20px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+.faq-q::after{
+  content:"+";
+  font-size:20px;
+  font-weight:400;
+  color:var(--purple);
+  flex-shrink:0;
+  transition:.2s;
+}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .28s ease;
+}
+.faq-a p{
+  padding:0 20px 18px;
+  font-size:14.5px;
+  color:var(--gray);
+}
+.faq-item.open .faq-a{max-height:320px;}
+
+/* 页脚 */
+.site-footer{
+  background:#0e0e10;
+  color:#a9a9b6;
+  margin-top:20px;
+}
+.footer-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:48px 20px 26px;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:34px;
+}
+.footer-brand .logo{color:#fff;margin-bottom:14px;}
+.footer-brand p{font-size:13.5px;line-height:1.8;color:#8f8f9c;}
+.footer-col h4{
+  color:#fff;
+  font-size:14.5px;
+  margin-bottom:14px;
+}
+.footer-col a{
+  display:block;
+  font-size:13.5px;
+  padding:5px 0;
+  color:#a9a9b6;
+  transition:.2s;
+}
+.footer-col a:hover{color:var(--purple);}
+.footer-bottom{
+  border-top:1px solid #232329;
+  text-align:center;
+  font-size:12.5px;
+  color:#75757f;
+  padding:18px 20px 26px;
+  line-height:1.8;
+}
+
+/* 响应式 */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:34px;}
+  .hero h1{font-size:32px;}
+  .steps{grid-template-columns:1fr;}
+  .split{grid-template-columns:1fr;gap:28px;}
+  .article-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:26px;}
+  .main-nav{display:none;}
+}
+@media (max-width:620px){
+  .hero-inner{padding:38px 18px 44px;}
+  .hero h1{font-size:27px;}
+  .section{padding:44px 18px;}
+  .section-head h2{font-size:22px;}
+  .header-inner{padding:12px 16px;gap:14px;}
+  .header-cta{padding:8px 14px;font-size:13px;}
+  .logo{font-size:17px;}
+  .logo-mark{width:30px;height:30px;font-size:15px;}
+  .footer-inner{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:400px){
+  .cat-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">本页为 Twitch（中文俗称“老鼠台”）直播观看与功能科普指南，内容仅供参考</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-mark">T</div>
+      <div>
+        老鼠台twitch
+        <small>直播观看指南站</small>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="#what">平台简介</a>
+      <a href="#cats">直播分类</a>
+      <a href="#start">上手步骤</a>
+      <a href="#features">功能互动</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a class="header-cta" href="#start">新手指南</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>老鼠台twitch：<span>看懂这个直播平台</span>，从围观到上手</h1>
+        <p class="lead">
+          “老鼠台”是中文圈对 Twitch 的谐音俗称。它是一个以游戏直播为核心、同时覆盖聊天、音乐、手工、户外等内容的实时视频平台。本页把它的分类结构、观看方式、账号功能和互动玩法讲清楚，帮第一次接触的人少走弯路。
+        </p>
+        <div class="hero-tags">
+          <span>游戏直播</span>
+          <span>弹幕聊天</span>
+          <span>订阅与关注</span>
+          <span>频道分类</span>
+          <span>实时互动</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#start">三步开始观看</a>
+          <a class="btn-ghost" href="#faq">先看常见问题</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="频道示例结构">
+        <div class="panel-head">
+          <span>频道列表示意</span>
+          <span><span class="live-dot"></span>正在直播</span>
+        </div>
+        <div class="panel-body">
+          <div class="stream-row">
+            <div class="thumb t1">游戏区</div>
+            <div class="stream-meta">
+              <b>竞技类游戏直播</b>
+              <small>实时对战画面 · 观众聊天互动</small>
+            </div>
+          </div>
+          <div class="stream-row">
+            <div class="thumb t2">聊天区</div>
+            <div class="stream-meta">
+              <b>Just Chatting 闲聊</b>
+              <small>主播与观众语音或文字交流</small>
+            </div>
+          </div>
+          <div class="stream-row">
+            <div class="thumb t3">音乐区</div>
+            <div class="stream-meta">
+              <b>音乐创作与演奏</b>
+              <small>乐器演奏 · 编曲过程展示</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 平台简介 -->
+  <section class="section" id="what">
+    <div class="section-head">
+      <span class="eyebrow">Platform Basics</span>
+      <h2>老鼠台twitch 是什么，和普通视频网站有什么不同</h2>
+      <p>理解它的定位，能帮你判断自己是想看内容、找主播，还是想自己开播。</p>
+    </div>
+    <div class="article-grid">
+      <article class="article-card">
+        <h3>核心是“实时”而不是“点播”</h3>
+        <p>与常见的视频网站不同，Twitch 的主要内容形态是直播：画面在主播操作的同时同步传送到观众端，观众看到的是正在发生的事，而不是已经剪好的成片。直播结束后，部分内容会保留为回放，但观看体验和直播本身差别较大。</p>
+        <p>正因为是实时的，观众的留言、打赏、订阅等行为会影响主播的即时反应，这种双向感是它区别于普通视频平台的关键。</p>
+      </article>
+      <article class="article-card">
+        <h3>以游戏起家，但不只做游戏</h3>
+        <p>平台早期以电子游戏直播为主，因此游戏区至今仍是内容量最大的板块。随着用户增长，聊天、音乐、美术创作、编程、手工、户外等分类逐渐成型，其中“Just Chatting（闲聊）”长期是观看量靠前的分类之一。</p>
+        <p>所以把“老鼠台twitch”等同于“只能看打游戏”并不准确，它更像一个以直播为载体的综合内容社区。</p>
+      </article>
+      <article class="article-card">
+        <h3>“老鼠台”这个叫法的由来</h3>
+        <p>“老鼠台”是中文用户根据 Twitch 发音衍生出的谐音昵称，带有调侃和亲近意味，在弹幕、论坛和社交平台中流传较广。它并不是官方名称，搜索时两种叫法指向的是同一个平台。</p>
+        <p>了解这一点有助于你在中文社区里搜索相关内容时，不被不同的称呼混淆。</p>
+      </article>
+      <article class="article-card">
+        <h3>谁适合使用这个平台</h3>
+        <p>想找特定游戏的高水平对局、想跟着主播学操作思路、想找陪伴感强的长时间直播、想参与实时聊天的用户，通常能在这里找到合适的内容。只想看精剪视频的用户，则可能更适合传统视频网站。</p>
+        <p>明确自己的需求，再决定投入多少时间，会比盲目刷首页更有效率。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 直播分类 -->
+  <section class="section" id="cats" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:none;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div class="section-head">
+        <span class="eyebrow">Categories</span>
+        <h2>常见的直播分类与内容方向</h2>
+        <p>首页和分类页是找内容的主要入口，先认识大类，再逐步缩小范围。</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <div class="icon">🎮</div>
+          <h3>电子游戏</h3>
+          <p>按具体游戏名称划分，涵盖竞技、单机、策略、独立游戏等，是内容量最大的板块。</p>
+        </div>
+        <div class="cat-card">
+          <div class="icon">💬</div>
+          <h3>闲聊互动</h3>
+          <p>主播以聊天、回应弹幕为主，适合喜欢陪伴感和实时交流的观众。</p>
+        </div>
+        <div class="cat-card">
+          <div class="icon">🎵</div>
+          <h3>音乐表演</h3>
+          <p>乐器演奏、翻唱、编曲制作过程展示，部分频道支持观众点歌互动。</p>
+        </div>
+        <div class="cat-card">
+          <div class="icon">🎨</div>
+          <h3>创意艺术</h3>
+          <p>绘画、数字建模、手工制作等创作过程的实时展示。</p>
+        </div>
+        <div class="cat-card">
+          <div class="icon">💻</div>
+          <h3>科技编程</h3>
+          <p>写代码、软件开发、硬件装机等偏技术向的直播内容。</p>
+        </div>
+        <div class="cat-card">
+          <div class="icon">🏕️</div>
+          <h3>户外生活</h3>
+          <p>旅行、户外活动、日常生活记录等移动场景直播。</p>
+        </div>
+        <div class="cat-card">
+          <div class="icon">🏆</div>
+          <h3>赛事活动</h3>
+          <p>电竞赛事、官方活动、特别企划等阶段性集中直播。</p>
+        </div>
+        <div class="cat-card">
+          <div class="icon">🗣️</div>
+          <h3>多语言频道</h3>
+          <p>按主播使用的语言区分内容，方便找到听得懂的表达。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 上手步骤 -->
+  <section class="section" id="start">
+    <div class="section-head">
+      <span class="eyebrow">Getting Started</span>
+      <h2>第一次使用，按这三步就能看起来</h2>
+      <p>不需要复杂设置，重点是先找到想看的内容，再决定要不要注册账号。</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>浏览与筛选</h3>
+        <p>打开首页后，可以先看推荐列表，也可以进入分类页按游戏名、语言或热度筛选。想找特定主播，直接搜索主播名或频道名即可。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>观看与画质调整</h3>
+        <p>进入频道后可以调整清晰度，网络条件一般时选择较低画质能减少卡顿。全屏、音量、延迟等控制项通常在播放器底部。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>注册与关注</h3>
+        <p>注册账号后可以关注频道、参与聊天、接收开播提醒。关注是免费的，订阅则属于付费支持，两者作用不同。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能与互动 -->
+  <section class="section" id="features" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:none;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div class="section-head">
+        <span class="eyebrow">Features</span>
+        <h2>账号功能与观众互动方式</h2>
+        <p>搞清楚哪些是免费功能、哪些涉及付费，能避免误操作。</p>
+      </div>
+      <div class="split">
+        <ul class="feature-list">
+          <li>
+            <div class="fi">★</div>
+            <div>
+              <b>关注（Follow）</b>
+              <span>免费操作，关注后可在关注列表快速找到该频道，并接收开播通知。</span>
+            </div>
+          </li>
+          <li>
+            <div class="fi">💬</div>
+            <div>
+              <b>聊天室发言</b>
+              <span>注册并完成必要验证后即可在聊天室发言，部分频道会设置发言门槛或仅限关注者。</span>
+            </div>
+          </li>
+          <li>
+            <div class="fi">🎁</div>
+            <div>
+              <b>订阅（Subscribe）</b>
+              <span>付费支持主播的方式，通常附带频道专属表情等权益，属于自愿行为。</span>
+            </div>
+          </li>
+          <li>
+            <div class="fi">🪙</div>
+            <div>
+              <b>Bits 与打赏</b>
+              <span>平台内的虚拟道具，可在聊天中发送以表达支持，使用前需了解相关规则。</span>
+            </div>
+          </li>
+          <li>
+            <div class="fi">🔔</div>
+            <div>
+              <b>开播提醒</b>
+              <span>对关注的频道开启通知后，主播上线时会收到提示，适合追固定主播的用户。</span>
+            </div>
+          </li>
+          <li>
+            <div class="fi">🎬</div>
+            <div>
+              <b>回放与精彩片段</b>
+              <span>部分直播结束后会保留回放，观众也可剪辑标记精彩片段，方便回看。</span>
+            </div>
+          </li>
+        </ul>
+
+        <aside class="aside-card">
+          <h3>观看前值得注意的几点</h3>
+          <ul>
+            <li>直播内容由主播自行安排，质量与风格差异较大，多试几个频道再决定长期关注谁。</li>
+            <li>聊天室有各自的社区规范，发言前先看频道规则，避免被禁言。</li>
+            <li>订阅、打赏等付费行为量力而行，平台不承诺任何观看收益。</li>
+            <li>遇到要求站外转账、索要账号密码的情况，应保持警惕。</li>
+            <li>长时间观看注意用眼和作息，直播时长往往较长，容易不知不觉熬夜。</li>
+          </ul>
+          <p class="aside-note">以上为通用性提示，具体功能与规则以平台实际展示为准，不同地区可能存在差异。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 选择建议 -->
+  <section class="section">
+    <div class="section-head">
+      <span class="eyebrow">Tips</span>
+      <h2>怎样更高效地找到想看的直播</h2>
+    </div>
+    <div class="article-grid">
+      <article class="article-card">
+        <h3>按游戏名搜索，比刷首页更快</h3>
+        <p>如果你有明确想看的游戏，直接在分类或搜索框输入游戏名称，再按当前观看人数排序，通常能快速找到正在进行的高热度直播。首页推荐受算法影响，未必符合你的口味。</p>
+      </article>
+      <article class="article-card">
+        <h3>用语言筛选降低理解成本</h3>
+        <p>直播的乐趣很大一部分来自主播的解说和聊天室氛围。如果语言不通，体验会打折扣。在筛选条件中限定语言，能明显提升观看舒适度。</p>
+      </article>
+      <article class="article-card">
+        <h3>关注中小型频道可能有意外收获</h3>
+        <p>高热度频道聊天室消息滚动极快，发言容易被淹没。中小型频道的互动更充分，主播也更容易注意到观众，适合想参与交流的人。</p>
+      </article>
+      <article class="article-card">
+        <h3>留意时区差异</h3>
+        <p>不少主播位于其他时区，开播时间可能对应你的深夜或清晨。关注后开启提醒，或查看频道主页的开播安排，能减少空等。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="background:#fff;border-top:1px solid var(--line);max-width:none;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div class="section-head" style="text-align:center;">
+        <span class="eyebrow">FAQ</span>
+        <h2>关于老鼠台twitch的常见问题</h2>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-item">
+          <button class="faq-q" type="button">“老鼠台”和 Twitch 是同一个东西吗？</button>
+          <div class="faq-a"><p>是的。“老鼠台”是中文用户对 Twitch 的谐音昵称，并非官方译名。两者指代同一个直播平台，搜索时使用哪个叫法都能找到相关内容。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">不注册账号可以看直播吗？</button>
+          <div class="faq-a"><p>通常可以直接观看直播画面，但参与聊天、关注频道、接收开播提醒等功能需要登录账号。具体限制以平台实际页面提示为准。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">关注和订阅有什么区别？</button>
+          <div class="faq-a"><p>关注是免费的，作用是方便你找到该频道并接收通知；订阅是付费行为，用于支持主播，通常附带一些频道专属权益。两者互不替代，可以只关注不订阅。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">直播卡顿、画质模糊怎么办？</button>
+          <div class="faq-a"><p>可以先在播放器设置中降低清晰度，或关闭其他占用带宽的程序。网络波动时，适当降低画质通常比强行维持高画质更流畅。若持续异常，可尝试更换网络环境后重新进入频道。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">聊天室发不出消息是怎么回事？</button>
+          <div class="faq-a"><p>常见原因包括：账号未完成必要验证、频道设置了仅关注者或订阅者可发言、发言频率过快被限制、内容触发了频道或平台的关键词过滤。可以先查看频道规则，再确认账号状态。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">直播结束后还能回看吗？</button>
+          <div class="faq-a"><p>取决于主播是否开启回放保存。开启的情况下，直播结束后一段时间内可在频道页面找到回放；未开启或已过保存期限的内容则无法回看。精彩片段功能也依赖主播设置。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">普通人可以自己开播吗？</button>
+          <div class="faq-a"><p>平台面向普通用户开放直播功能，注册账号后按引导完成开播设置即可。实际开播涉及设备、网络、内容规范等方面，建议先了解平台的开播规则和社区准则，再逐步尝试。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark">T</div>
+        <div>老鼠台twitch<small>直播观看指南站</small></div>
+      </div>
+      <p>本页围绕中文用户常说的“老鼠台twitch”整理直播平台的基础概念、分类结构、观看方式与互动功能，帮助新用户建立整体认识。内容为科普性说明，不构成任何官方信息。</p>
+    </div>
+    <div class="footer-col">
+      <h4>内容导航</h4>
+      <a href="#what">平台简介</a>
+      <a href="#cats">直播分类</a>
+      <a href="#start">上手步骤</a>
+      <a href="#features">功能互动</a>
+    </div>
+    <div class="footer-col">
+      <h4>观看相关</h4>
+      <a href="#start">画质与延迟</a>
+      <a href="#features">关注与订阅</a>
+      <a href="#faq">聊天室规则</a>
+      <a href="#faq">回放与片段</a>
+    </div>
+    <div class="footer-col">
+      <h4>使用提醒</h4>
+      <a href="#features">付费功能说明</a>
+      <a href="#faq">账号安全提示</a>
+      <a href="#faq">常见问题</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    本站为内容整理与科普页面，与直播平台官方无隶属关系。平台功能、规则及可用性可能随时调整，请以实际页面为准。
+  </div>
+</footer>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      items.forEach(function(other){ other.classList.remove('open'); });
+      if(!isOpen){ item.classList.add('open'); }
+    });
+  });
+})();
+</script>
+
+</body>
+      </html>
